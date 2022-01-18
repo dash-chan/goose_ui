@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:goose_ui/goose_ui.dart';
+import 'package:goose_icons/goose_icons.dart';
 
 void main() {
   test('adds one to input values', () {
