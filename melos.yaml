@@ -2,4 +2,4 @@ name: goose_ui
 
 packages:
   - packages/**
-  - example/**
+  - gallery/**
