@@ -1,0 +1,4 @@
+name: goose_ui
+
+packages:
+  - packages/**
