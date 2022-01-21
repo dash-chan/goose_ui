@@ -13,13 +13,39 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: ListView(
-        children: [
-          GButton(
-            onPressed: () {},
-            child: Text('test'),
-          ),
-        ],
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            GRawButton(
+              onPressed: () {},
+              child: const Text('default'),
+              icon: const Icon(Icons.ac_unit),
+            ),
+            const GRawButton(
+              color: Colors.blue,
+              onPressed: null,
+              child: Text('null onPressed'),
+              icon: Icon(Icons.ac_unit),
+            ),
+            GRawButton(
+              color: Colors.blue,
+              onPressed: () {},
+              child: const Text('null onPressed'),
+              icon: const Icon(Icons.ac_unit),
+              shape: const RoundedRectangleBorder(),
+            ),
+            GRawButton(
+              color: Colors.blue,
+              onPressed: () {},
+              child: const Text('null onPressed'),
+              icon: const Icon(Icons.ac_unit),
+              elevation: 4,
+            ),
+          ],
+        ),
       ),
     );
   }
