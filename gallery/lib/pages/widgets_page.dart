@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery/examples/button_example.dart';
+import 'package:gallery/examples/checkbox_example.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class WidgetsPage extends StatefulWidget {
@@ -17,6 +18,11 @@ class _WidgetsPageState extends State<WidgetsPage> {
       icon: Icons.smart_button_rounded,
       title: '按钮',
       child: const ButtonExample(),
+    ),
+    WidgetItem(
+      icon: Icons.check_box_rounded,
+      title: 'checkbox',
+      child: const CheckboxExample(),
     ),
   ];
   @override
