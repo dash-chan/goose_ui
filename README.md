@@ -3,10 +3,10 @@ an elegant uikit for flutter desktop.
 
 ## Getting Started
 
-### run example 
+### run gallery 
 
 ```shell
-cd example
+cd gallery
 flutter run
 ```
 
@@ -18,8 +18,13 @@ melos bs
 
 ## RoadMap
 
+### goose_ui road map
+
 * [0.1](https://github.com/goose-kit/goose_ui/projects/1)
 
+### gallery road map
+
+* [ ] use Navigator 2
 
 ## Thanks 
 

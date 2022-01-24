@@ -50,7 +50,7 @@ class GRawButton extends StatelessWidget {
     this.padding = const EdgeInsets.symmetric(horizontal: 12),
     this.height = 32,
     this.margin = EdgeInsets.zero,
-    this.shape = const StadiumBorder(),
+    this.shape = const RoundedRectangleBorder(),
     this.borderRadius,
     this.color,
     this.clip = Clip.hardEdge,
