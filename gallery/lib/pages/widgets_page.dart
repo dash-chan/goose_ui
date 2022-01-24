@@ -2,6 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery/examples/button_example.dart';
 import 'package:gallery/examples/checkbox_example.dart';
+import 'package:gallery/examples/scaffold_example.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class WidgetsPage extends StatefulWidget {
@@ -21,8 +22,13 @@ class _WidgetsPageState extends State<WidgetsPage> {
     ),
     WidgetItem(
       icon: Icons.check_box_rounded,
-      title: 'checkbox',
+      title: 'Checkbox',
       child: const CheckboxExample(),
+    ),
+    WidgetItem(
+      icon: Icons.backpack_rounded,
+      title: 'Scaffold',
+      child: const ScaffoldExample(),
     ),
   ];
   @override
