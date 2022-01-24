@@ -1,4 +1,7 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery/pages/main_page.dart';
+import 'package:gallery/pages/widgets_page.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,91 +12,51 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final GCheckboxController<String> _checkboxController = GCheckboxController({
-    '1': false,
-    '2': null,
-    '3': true,
-  });
+  int _currentIndex = 0;
+  bool _reverse = false;
+
+  VoidCallback next(int index) => () => setState(() {
+        _reverse = index < _currentIndex;
+        _currentIndex = index;
+      });
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: [
-            GRawButton(
-              onPressed: () {},
-              child: const Text('default'),
-              icon: const Icon(Icons.ac_unit),
-            ),
-            const GRawButton(
-              color: Colors.blue,
-              onPressed: null,
-              child: Text('null onPressed'),
-              icon: Icon(Icons.ac_unit),
-            ),
-            GRawButton(
-              color: Colors.blue,
-              onPressed: () {},
-              child: const Text('null onPressed'),
-              icon: const Icon(Icons.ac_unit),
-              shape: const RoundedRectangleBorder(),
-            ),
-            GRawButton(
-              color: Colors.blue,
-              onPressed: () {},
-              child: const Text('null onPressed'),
-              icon: const Icon(Icons.ac_unit),
-              elevation: 4,
-            ),
-            GRawButton(
-              onPressed: () {},
-              child: const Text('null onPressed'),
-              icon: const Icon(Icons.ac_unit),
-              shape: const StadiumBorder(
-                side: BorderSide(
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-            GRawCheckbox(
-              value: null,
-              onChange: (_) {},
-              tristate: true,
-            ),
-            GRawCheckbox(
-              value: null,
-              onChange: (_) {},
-              tristate: true,
-              child: const Text('test checkbox'),
-            ),
-            GCheckboxGroup(
-              controller: _checkboxController,
-              onChange: (item) {
-                print(item);
-              },
-              tristate: true,
-              builder: (BuildContext context, String value) {
-                return Text('checkbox:' + value);
-              },
-            ),
-            GRawButton(
-              onPressed: () {
-                _checkboxController.clear();
-              },
-              child: const Text('clear'),
-            ),
-            GRawButton(
-              onPressed: () {
-                _checkboxController.selectAll();
-              },
-              child: const Text('select All'),
-            ),
-          ],
-        ),
+    return GScaffold(
+      appBar: GAppBar(
+        title: const Text('Goose UI'),
+        actions: [
+          GRawButton(
+            onPressed: next(0),
+            child: const Text('GooseUI'),
+          ),
+          GRawButton(
+            onPressed: next(1),
+            child: const Text('组件'),
+          ),
+          GRawButton(
+            onPressed: () {},
+            icon: const Icon(Icons.code_rounded),
+            child: const Text('Github'),
+          ),
+        ],
+        elevation: 4,
+      ),
+      systemBar: Container(color: Colors.blue),
+      content: PageTransitionSwitcher(
+        transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
+          return SharedAxisTransition(
+            child: child,
+            animation: primaryAnimation,
+            secondaryAnimation: secondaryAnimation,
+            transitionType: SharedAxisTransitionType.horizontal,
+          );
+        },
+        reverse: _reverse,
+        child: const [
+          MainPage(),
+          WidgetsPage(),
+        ][_currentIndex],
       ),
     );
   }
