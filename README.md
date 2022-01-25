@@ -20,11 +20,14 @@ melos bs
 
 ### goose_ui road map
 
-* [0.1](https://github.com/goose-kit/goose_ui/projects/1)
+* [0.1](https://github.com/goose-kit/goose_ui/projects/1) widgets develop
+* [0.2](https://github.com/goose-kit/goose_ui/projects/2) theme  
 
 ### gallery road map
 
 * [ ] use Navigator 2
+
+###
 
 ## Thanks 
 
