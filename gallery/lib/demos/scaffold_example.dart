@@ -10,6 +10,7 @@ class ScaffoldExample extends StatefulWidget {
 }
 
 class _ScaffoldExampleState extends State<ScaffoldExample> {
+  // BEGIN scaffoldDemo#2
   Widget gen(Color color, String text) {
     return Container(
       color: color,
@@ -17,6 +18,7 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
       alignment: Alignment.center,
     );
   }
+  // END
 
   @override
   Widget build(BuildContext context) {

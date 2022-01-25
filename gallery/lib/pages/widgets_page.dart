@@ -41,12 +41,21 @@ class _WidgetsPageState extends State<WidgetsPage> {
   @override
   Widget build(BuildContext context) {
     return CodeStyle(
+      stringStyle: TextStyle(color: Colors.orange[900]!),
+      numberStyle: const TextStyle(color: Colors.green),
+      classStyle: const TextStyle(color: Colors.blue),
+      punctuationStyle: const TextStyle(color: Colors.black54),
+      baseStyle: TextStyle(color: Colors.blue[900]!),
+      keywordStyle: TextStyle(color: Colors.purple[900]!),
+      constantStyle: TextStyle(color: Colors.grey[700]!),
       child: GScaffold(
         drawer: GAppMenu(
           onPressed: (item) {
             int index = _menus.indexOf(item as WidgetItem);
             _currentIndex = index;
             setState(() {});
+            int a = 12;
+            String b = '123';
           },
           children: _menus,
         ),
