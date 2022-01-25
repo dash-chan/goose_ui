@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gallery/home_page.dart';
+import 'package:gallery/utils/desktop_util.dart';
+import 'package:window_manager/window_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (DesktopUtil.isDesktopExceptWeb) {
+    await windowManager.ensureInitialized();
+  }
+
+  windowManager.waitUntilReadyToShow().then((_) async {
+    if (!await windowManager.isFullScreen()) {
+      await windowManager.setFullScreen(true);
+    }
+  });
   runApp(const MyApp());
 }
 

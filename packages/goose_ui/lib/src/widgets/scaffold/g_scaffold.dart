@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:goose_ui/src/widgets/app_bar/g_app_bar.dart';
 import 'package:goose_ui/src/widgets/common/animated_sizedbox.dart';
 import 'package:goose_ui/src/widgets/drawer/g_drawer.dart';
 import 'package:goose_ui/src/widgets/system_bar/g_system_bar.dart';
 
 class GScaffold extends StatefulWidget {
+  final Widget? appTitleBar;
+
   /// normally use [GAppBar]
   final Widget? appBar;
 
@@ -26,6 +29,7 @@ class GScaffold extends StatefulWidget {
   final GDrawerState drawerState;
   const GScaffold({
     Key? key,
+    this.appTitleBar,
     this.appBar,
     this.systemBar,
     required this.content,
@@ -61,6 +65,9 @@ class _GScaffoldState extends State<GScaffold> {
     }
     if (widget.appBar != null || widget.systemBar != null) {
       List<Widget> _columnChildren = [];
+      if (widget.appTitleBar != null) {
+        _columnChildren.add(SizedBox(height: 24, child: widget.appTitleBar));
+      }
       if (widget.appBar != null) {
         _columnChildren.add(SizedBox(height: 64, child: widget.appBar!));
       }
