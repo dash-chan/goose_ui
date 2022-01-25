@@ -1,9 +1,10 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:gallery/examples/button_example.dart';
-import 'package:gallery/examples/checkbox_example.dart';
-import 'package:gallery/examples/scaffold_example.dart';
-import 'package:gallery/examples/switch_example.dart';
+import 'package:gallery/codeviewer/code_style.dart';
+import 'package:gallery/demos/button_example.dart';
+import 'package:gallery/demos/checkbox_example.dart';
+import 'package:gallery/demos/scaffold_example.dart';
+import 'package:gallery/demos/switch_example.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class WidgetsPage extends StatefulWidget {
@@ -39,25 +40,27 @@ class _WidgetsPageState extends State<WidgetsPage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return GScaffold(
-      drawer: GAppMenu(
-        onPressed: (item) {
-          int index = _menus.indexOf(item as WidgetItem);
-          _currentIndex = index;
-          setState(() {});
-        },
-        children: _menus,
-      ),
-      content: PageTransitionSwitcher(
-        transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
-          return SharedAxisTransition(
-            child: child,
-            animation: primaryAnimation,
-            secondaryAnimation: secondaryAnimation,
-            transitionType: SharedAxisTransitionType.vertical,
-          );
-        },
-        child: _menus.map((e) => e.child).toList()[_currentIndex],
+    return CodeStyle(
+      child: GScaffold(
+        drawer: GAppMenu(
+          onPressed: (item) {
+            int index = _menus.indexOf(item as WidgetItem);
+            _currentIndex = index;
+            setState(() {});
+          },
+          children: _menus,
+        ),
+        content: PageTransitionSwitcher(
+          transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
+            return SharedAxisTransition(
+              child: child,
+              animation: primaryAnimation,
+              secondaryAnimation: secondaryAnimation,
+              transitionType: SharedAxisTransitionType.vertical,
+            );
+          },
+          child: _menus.map((e) => e.child).toList()[_currentIndex],
+        ),
       ),
     );
   }

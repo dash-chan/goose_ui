@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gallery/codeviewer/code_segments.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class ScaffoldExample extends StatefulWidget {
@@ -23,6 +24,7 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
       content: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          // BEGIN scaffoldDemo#1
           SizedBox(
             height: 500,
             child: GScaffold(
@@ -32,6 +34,8 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
               systemBar: gen(Colors.amber[100]!, 'SystemBar'),
             ),
           ),
+          // END
+          Text.rich(CodeSegments.scaffoldDemo(context)),
         ],
       ),
     );

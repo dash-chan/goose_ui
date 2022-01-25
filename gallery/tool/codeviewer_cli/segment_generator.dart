@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// @dart=2.9
-
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -21,8 +19,6 @@ const _globalPrologue =
 // Copyright 2019 The Flutter team. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
-// @dart=2.9
 
 import 'package:flutter/material.dart';
 import 'package:gallery/codeviewer/code_style.dart';
@@ -53,7 +49,7 @@ _FileReadStatus _updatedStatus(_FileReadStatus oldStatus, String line) {
     lineStatus = _FileReadStatus.finished;
   }
 
-  _FileReadStatus newStatus;
+  _FileReadStatus? newStatus;
   switch (oldStatus) {
     case _FileReadStatus.comments:
       newStatus =
@@ -90,7 +86,7 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
     final content = file.readAsStringSync();
     final lines = const LineSplitter().convert(content);
 
-    var status = _FileReadStatus.comments;
+    _FileReadStatus status = _FileReadStatus.comments;
 
     final prologue = StringBuffer();
 
@@ -148,7 +144,7 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
         // Simple line.
 
         for (final name in activeSubsegments) {
-          subsegments[name].writeln(line);
+          subsegments[name]!.writeln(line);
         }
       }
     }
@@ -159,7 +155,7 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
   }
 
   var segments = <String, List<TaggedString>>{};
-  var segmentPrologues = <String, String>{};
+  var segmentPrologues = <String, String?>{};
 
   // Sometimes a code segment is made up of subsegments. They are marked by
   // names with a "#" symbol in it, such as "bottomSheetDemoModal#1" and
@@ -181,7 +177,7 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
     if (!segments.containsKey(name)) {
       segments[name] = [];
     }
-    segments[name].add(
+    segments[name]!.add(
       TaggedString(
         text: value.toString(),
         order: order,
@@ -192,7 +188,7 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
   });
 
   segments.forEach((key, value) {
-    value.sort((ts1, ts2) => (ts1.order - ts2.order).sign.round());
+    value.sort((ts1, ts2) => (ts1.order! - ts2.order!).sign.round());
   });
 
   var answer = <String, String>{};
@@ -200,11 +196,11 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
   for (final name in segments.keys) {
     final buffer = StringBuffer();
 
-    buffer.write(segmentPrologues[name].trim());
+    buffer.write(segmentPrologues[name]!.trim());
     buffer.write('\n\n');
 
-    for (final ts in segments[name]) {
-      buffer.write(ts.text.trim());
+    for (final ts in segments[name]!) {
+      buffer.write(ts.text!.trim());
       buffer.write('\n\n');
     }
 
@@ -221,8 +217,8 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
 class TaggedString {
   TaggedString({this.text, this.order});
 
-  final String text;
-  final double order;
+  final String? text;
+  final double? order;
 }
 
 void _combineSegments(Map<String, String> segments, StringBuffer output) {
@@ -284,7 +280,7 @@ class PreformatterException implements Exception {
 // Function to make sure we capture all of the stdout.
 // Reference: https://github.com/dart-lang/sdk/issues/31666
 Future<String> _startProcess(String executable,
-    {List<String> arguments = const [], String input}) async {
+    {List<String> arguments = const [], String? input}) async {
   final output = <int>[];
   final completer = Completer<int>();
   final process = await Process.start(executable, arguments, runInShell: true);
