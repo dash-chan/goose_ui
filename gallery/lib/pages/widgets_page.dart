@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gallery/examples/button_example.dart';
 import 'package:gallery/examples/checkbox_example.dart';
 import 'package:gallery/examples/scaffold_example.dart';
+import 'package:gallery/examples/switch_example.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class WidgetsPage extends StatefulWidget {
@@ -29,6 +30,11 @@ class _WidgetsPageState extends State<WidgetsPage> {
       icon: Icons.backpack_rounded,
       title: 'Scaffold',
       child: const ScaffoldExample(),
+    ),
+    WidgetItem(
+      icon: Icons.switch_left,
+      title: 'switch',
+      child: const SwitchExample(),
     ),
   ];
   @override

@@ -15,3 +15,5 @@ export 'src/widgets/radio/g_raw_radio.dart';
 export 'src/widgets/radio/g_radio_group.dart';
 
 export 'src/widgets/scaffold/g_scaffold.dart';
+
+export 'src/widgets/switch/g_switch.dart';
