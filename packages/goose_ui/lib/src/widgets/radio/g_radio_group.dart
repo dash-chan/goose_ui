@@ -21,17 +21,17 @@ class GRadioGroup<T> extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<GRadioGroup> createState() => _GRadioGroupState();
+  State<GRadioGroup<T>> createState() => _GRadioGroupState<T>();
 }
 
-class _GRadioGroupState extends State<GRadioGroup> {
+class _GRadioGroupState<T> extends State<GRadioGroup<T>> {
   @override
   Widget build(BuildContext context) {
     return Wrap(
       spacing: widget.spacing,
       runSpacing: widget.runSpacing,
       children: widget.items.map((e) {
-        return GRawRadio(
+        return GRawRadio<T>(
           value: e,
           groupValue: widget.value,
           onChanged: widget.onChanged,

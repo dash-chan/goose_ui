@@ -4,6 +4,10 @@ export 'src/widgets/app_bar/g_app_bar.dart';
 
 export 'src/widgets/app_menu/g_app_menu.dart';
 
+export 'src/widgets/app_title_bar/g_app_title_bar.dart';
+
+export 'src/widgets/card/g_raw_card.dart';
+
 export 'src/widgets/drawer/g_drawer.dart';
 
 export 'src/widgets/button/g_raw_button.dart';

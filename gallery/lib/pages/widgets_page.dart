@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gallery/codeviewer/code_style.dart';
 import 'package:gallery/demos/button_example.dart';
 import 'package:gallery/demos/checkbox_example.dart';
+import 'package:gallery/demos/radio_example.dart';
 import 'package:gallery/demos/scaffold_example.dart';
 import 'package:gallery/demos/switch_example.dart';
 import 'package:goose_ui/goose_ui.dart';
@@ -28,6 +29,11 @@ class _WidgetsPageState extends State<WidgetsPage> {
       child: const CheckboxExample(),
     ),
     WidgetItem(
+      icon: Icons.radio_rounded,
+      title: 'Radio',
+      child: const RadioExample(),
+    ),
+    WidgetItem(
       icon: Icons.backpack_rounded,
       title: 'Scaffold',
       child: const ScaffoldExample(),
@@ -48,6 +54,7 @@ class _WidgetsPageState extends State<WidgetsPage> {
       baseStyle: TextStyle(color: Colors.blue[900]!),
       keywordStyle: TextStyle(color: Colors.purple[900]!),
       constantStyle: TextStyle(color: Colors.grey[700]!),
+      commentStyle: TextStyle(color: Colors.grey[500]!),
       child: GScaffold(
         drawer: GAppMenu(
           onPressed: (item) {

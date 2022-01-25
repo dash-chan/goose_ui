@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gallery/codeviewer/code_segments.dart';
+import 'package:gallery/widgets/code_wrapper.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class ScaffoldExample extends StatefulWidget {
@@ -26,18 +27,19 @@ class _ScaffoldExampleState extends State<ScaffoldExample> {
       content: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // BEGIN scaffoldDemo#1
-          SizedBox(
-            height: 500,
+          CodeWrapper(
+            title: 'Default',
+            height: 400,
+            // BEGIN scaffoldDemo#1
             child: GScaffold(
               appBar: gen(Colors.blue[200]!, 'AppBar'),
               drawer: gen(Colors.green[100]!, 'Drawer'),
               content: gen(Colors.grey[200]!, 'Content'),
               systemBar: gen(Colors.amber[100]!, 'SystemBar'),
             ),
+            // END
+            codeBlock: CodeSegments.scaffoldDemo(context),
           ),
-          // END
-          Text.rich(CodeSegments.scaffoldDemo(context)),
         ],
       ),
     );
