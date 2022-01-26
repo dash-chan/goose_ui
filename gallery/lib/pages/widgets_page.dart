@@ -4,6 +4,7 @@ import 'package:gallery/codeviewer/code_style.dart';
 import 'package:gallery/demos/button_example.dart';
 import 'package:gallery/demos/checkbox_example.dart';
 import 'package:gallery/demos/expansion_example.dart';
+import 'package:gallery/demos/loading_example.dart';
 import 'package:gallery/demos/radio_example.dart';
 import 'package:gallery/demos/rating_example.dart';
 import 'package:gallery/demos/scaffold_example.dart';
@@ -54,6 +55,11 @@ class _WidgetsPageState extends State<WidgetsPage> {
       icon: Icons.expand,
       title: 'expansion',
       child: const ExpansionExample(),
+    ),
+    WidgetItem(
+      icon: Icons.circle_outlined,
+      title: 'loading',
+      child: const LoadingExample(),
     ),
   ];
   @override

@@ -3,20 +3,23 @@ import 'package:goose_ui/goose_ui.dart';
 
 class CodeWrapper extends StatelessWidget {
   final String title;
-  final Widget child;
+  final Widget? child;
+  final List<Widget>? children;
   final double? height;
   final TextSpan codeBlock;
   const CodeWrapper({
     Key? key,
     required this.title,
-    required this.child,
+    this.child,
     this.height,
     required this.codeBlock,
+    this.children,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Widget _child = child;
+    Widget _child = child ??
+        Column(children: children ?? [], mainAxisSize: MainAxisSize.min);
     if (height != null) {
       _child = SizedBox(
         height: height,
