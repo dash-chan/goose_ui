@@ -10,11 +10,26 @@ cd gallery
 flutter run
 ```
 
+* generate gallery code
+> using codeviewer_cli
+```dart
+dart run tool/codeviewer_cli/main.dart
+```
+
 ### development
 
 ```dart
 melos bs
 ```
+
+## Current Widgets
+
+* [x] Button
+* [x] Checkbox
+* [x] Radio
+* [x] Rating
+* [x] Scaffold
+* [x] Switch
 
 ## RoadMap
 
@@ -26,8 +41,6 @@ melos bs
 ### gallery road map
 
 * [ ] use Navigator 2
-
-###
 
 ## Thanks 
 
