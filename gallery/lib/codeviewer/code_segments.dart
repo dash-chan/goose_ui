@@ -604,6 +604,78 @@ class CodeSegments {
     ]);
   }
 
+  static TextSpan ratingBar1(BuildContext context) {
+    final codeStyle = CodeStyle.of(context);
+    return TextSpan(children: [
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:flutter/material.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/codeviewer/code_segments.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/code_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:goose_ui/goose_ui.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'int'),
+      TextSpan(style: codeStyle.baseStyle, text: ' _rating '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '='),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.numberStyle, text: '0'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000achild'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'GIntegerRatingBar'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              value'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' _rating'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(
+          style: codeStyle.baseStyle, text: '\u000a              onPressed'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: 'value'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ')'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '{'),
+      TextSpan(
+          style: codeStyle.baseStyle, text: '\u000a                setState'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '(()'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '=>'),
+      TextSpan(style: codeStyle.baseStyle, text: ' _rating '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '='),
+      TextSpan(style: codeStyle.baseStyle, text: ' value'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ');'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '},'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a            '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+    ]);
+  }
+
   static TextSpan scaffoldDemo(BuildContext context) {
     final codeStyle = CodeStyle.of(context);
     return TextSpan(children: [

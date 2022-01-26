@@ -4,6 +4,7 @@ import 'package:gallery/codeviewer/code_style.dart';
 import 'package:gallery/demos/button_example.dart';
 import 'package:gallery/demos/checkbox_example.dart';
 import 'package:gallery/demos/radio_example.dart';
+import 'package:gallery/demos/rating_example.dart';
 import 'package:gallery/demos/scaffold_example.dart';
 import 'package:gallery/demos/switch_example.dart';
 import 'package:goose_ui/goose_ui.dart';
@@ -42,6 +43,11 @@ class _WidgetsPageState extends State<WidgetsPage> {
       icon: Icons.switch_left,
       title: 'switch',
       child: const SwitchExample(),
+    ),
+    WidgetItem(
+      icon: Icons.star_border_rounded,
+      title: 'rating bar',
+      child: const RatingExample(),
     ),
   ];
   @override
