@@ -11,8 +11,31 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return const GScaffold(
-      content: SizedBox(),
+    return GScaffold(
+      content: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 120),
+        children: [
+          Center(
+            child: Image.asset('assets/logo.png', height: 84, width: 84),
+          ),
+          const SizedBox(height: 32),
+          const Center(
+            child: Text(
+              'Goose UI',
+              style: TextStyle(
+                fontWeight: FontWeight.w300,
+                fontSize: 32,
+              ),
+            ),
+          ),
+          const Center(
+            child: Text(
+              'flutter 桌面端组件库',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
