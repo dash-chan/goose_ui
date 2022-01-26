@@ -79,10 +79,9 @@ class _WidgetsPageState extends State<WidgetsPage> {
             int index = _menus.indexOf(item as WidgetItem);
             _currentIndex = index;
             setState(() {});
-            int a = 12;
-            String b = '123';
           },
           children: _menus,
+          shape: const StadiumBorder(),
         ),
         content: PageTransitionSwitcher(
           transitionBuilder: (child, primaryAnimation, secondaryAnimation) {

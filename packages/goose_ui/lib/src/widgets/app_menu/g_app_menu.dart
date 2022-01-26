@@ -5,12 +5,14 @@ class GAppMenu extends StatefulWidget {
   final bool expanded;
   final Color? backgroundColor;
   final void Function(GAppMenuItem item)? onPressed;
+  final ShapeBorder? shape;
   const GAppMenu({
     Key? key,
     required this.children,
     this.expanded = true,
     this.backgroundColor,
     this.onPressed,
+    this.shape,
   }) : super(key: key);
 
   @override
@@ -46,6 +48,7 @@ class _GAppMenuState extends State<GAppMenu> {
           Widget icon = Icon(e.activeIcon ?? e.icon);
           return ListTile(
             leading: same ? icon : Icon(e.icon),
+            shape: widget.shape,
             title: Text(
               e.title,
               softWrap: false,
