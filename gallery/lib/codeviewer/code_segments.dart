@@ -9,6 +9,71 @@ import 'package:flutter/material.dart';
 import 'package:gallery/codeviewer/code_style.dart';
 
 class CodeSegments {
+  static TextSpan expansion(BuildContext context) {
+    final codeStyle = CodeStyle.of(context);
+    return TextSpan(children: [
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:flutter/material.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/code_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:goose_ui/goose_ui.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000achild'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'GExpansion'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              child'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'Container'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: 'height'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.numberStyle, text: '100'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: ' color'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'Colors'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '.'),
+      TextSpan(style: codeStyle.baseStyle, text: 'lightBlue'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              tile'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.keywordStyle, text: 'const'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'ListTile'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: 'title'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'Text'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.stringStyle, text: '\u0027Title\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ')),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a            '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+    ]);
+  }
+
   static TextSpan gButton1(BuildContext context) {
     final codeStyle = CodeStyle.of(context);
     return TextSpan(children: [

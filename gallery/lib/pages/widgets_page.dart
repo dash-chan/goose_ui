@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gallery/codeviewer/code_style.dart';
 import 'package:gallery/demos/button_example.dart';
 import 'package:gallery/demos/checkbox_example.dart';
+import 'package:gallery/demos/expansion_example.dart';
 import 'package:gallery/demos/radio_example.dart';
 import 'package:gallery/demos/rating_example.dart';
 import 'package:gallery/demos/scaffold_example.dart';
@@ -48,6 +49,11 @@ class _WidgetsPageState extends State<WidgetsPage> {
       icon: Icons.star_border_rounded,
       title: 'rating bar',
       child: const RatingExample(),
+    ),
+    WidgetItem(
+      icon: Icons.expand,
+      title: 'expansion',
+      child: const ExpansionExample(),
     ),
   ];
   @override
