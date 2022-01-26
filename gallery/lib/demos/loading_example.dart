@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gallery/codeviewer/code_segments.dart';
 import 'package:gallery/widgets/code_wrapper.dart';
+import 'package:gallery/widgets/page_wrapper.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class LoadingExample extends StatefulWidget {
@@ -16,28 +17,25 @@ class _LoadingExampleState extends State<LoadingExample> {
   // END
   @override
   Widget build(BuildContext context) {
-    return GScaffold(
-      content: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          CodeWrapper(
-            title: 'default',
-            children: [
-              // BEGIN loading#2
-              GLoading(
-                child: const Placeholder(fallbackHeight: 100),
-                loading: _loading,
-              ),
-              GRawButton(
-                onPressed: () => setState(() => _loading = !_loading),
-                child: const Text('change'),
-              ),
-              // END
-            ],
-            codeBlock: CodeSegments.loading(context),
-          ),
-        ],
-      ),
+    return PageWrapper(
+      children: [
+        CodeWrapper(
+          title: 'default',
+          children: [
+            // BEGIN loading#2
+            GLoading(
+              child: const Placeholder(fallbackHeight: 100),
+              loading: _loading,
+            ),
+            GRawButton(
+              onPressed: () => setState(() => _loading = !_loading),
+              child: const Text('change'),
+            ),
+            // END
+          ],
+          codeBlock: CodeSegments.loading(context),
+        )
+      ],
     );
   }
 }

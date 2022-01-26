@@ -38,6 +38,7 @@ dependencies:
     path: ../packages/goose_ui
   animations: ^2.0.2
   window_manager: ^0.1.4
+  waterfall_flow: ^3.0.2
 
 dev_dependencies:
   flutter_test:

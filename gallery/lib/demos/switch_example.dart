@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gallery/codeviewer/code_segments.dart';
+import 'package:gallery/widgets/code_wrapper.dart';
+import 'package:gallery/widgets/page_wrapper.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class SwitchExample extends StatefulWidget {
@@ -11,14 +14,19 @@ class SwitchExample extends StatefulWidget {
 class _SwitchExampleState extends State<SwitchExample> {
   @override
   Widget build(BuildContext context) {
-    return GScaffold(
-      content: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          GSwitch(value: false, onChanged: (_) {}),
-          GSwitch(value: true, onChanged: (_) {}),
-        ],
-      ),
+    return PageWrapper(
+      children: [
+        CodeWrapper(
+          title: 'default',
+          children: [
+            // BEGIN switch1
+            GSwitch(value: false, onChanged: (_) {}),
+            GSwitch(value: true, onChanged: (_) {}),
+            // END
+          ],
+          codeBlock: CodeSegments.switch1(context),
+        ),
+      ],
     );
   }
 }

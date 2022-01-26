@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-
-
 import 'package:string_scanner/string_scanner.dart';
 
 abstract class SyntaxPrehighlighter {
@@ -95,8 +93,8 @@ class DartSyntaxPrehighlighter extends SyntaxPrehighlighter {
 
       for (final span in _spans) {
         if (currentPosition != span.start) {
-          formattedText
-              .add(CodeSpan(text: _src!.substring(currentPosition, span.start)));
+          formattedText.add(
+              CodeSpan(text: _src!.substring(currentPosition, span.start)));
         }
 
         formattedText
@@ -106,8 +104,8 @@ class DartSyntaxPrehighlighter extends SyntaxPrehighlighter {
       }
 
       if (currentPosition != _src!.length) {
-        formattedText
-            .add(CodeSpan(text: _src!.substring(currentPosition, _src!.length)));
+        formattedText.add(
+            CodeSpan(text: _src!.substring(currentPosition, _src!.length)));
       }
 
       return formattedText;
@@ -378,7 +376,6 @@ String _styleNameOf(_HighlightType type) {
     case _HighlightType.base:
       return 'baseStyle';
   }
-  return '';
 }
 
 String _escape(String text) {
