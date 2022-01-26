@@ -73,9 +73,7 @@ class _GAppBarState extends State<GAppBar> {
     return Material(
       color: widget.color,
       elevation: widget.elevation,
-      child: Row(
-        children: _children,
-      ),
+      child: Row(children: _children),
     );
   }
 }

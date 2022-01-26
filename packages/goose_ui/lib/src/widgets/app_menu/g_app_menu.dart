@@ -42,8 +42,10 @@ class _GAppMenuState extends State<GAppMenu> {
     } else {
       _child = ListView(
         children: widget.children.map((e) {
+          bool same = _selected == e;
+          Widget icon = Icon(e.activeIcon ?? e.icon);
           return ListTile(
-            leading: Icon(e.icon),
+            leading: same ? icon : Icon(e.icon),
             title: Text(
               e.title,
               softWrap: false,
@@ -54,9 +56,8 @@ class _GAppMenuState extends State<GAppMenu> {
               });
               if (widget.onPressed != null) widget.onPressed!(e);
             },
-            tileColor: _selected == e
-                ? Theme.of(context).primaryColor.withOpacity(0.2)
-                : null,
+            tileColor:
+                same ? Theme.of(context).primaryColor.withOpacity(0.2) : null,
           );
         }).toList(),
       );
@@ -72,11 +73,13 @@ class _GAppMenuState extends State<GAppMenu> {
 class GAppMenuItem {
   final List<GAppMenuItem>? children;
   final IconData icon;
+  final IconData? activeIcon;
   final String title;
   final String? path;
   const GAppMenuItem({
     this.children,
     required this.icon,
+    this.activeIcon,
     required this.title,
     this.path,
   });
