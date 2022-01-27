@@ -12,31 +12,23 @@ class CheckboxExample extends StatefulWidget {
 }
 
 class _CheckboxExampleState extends State<CheckboxExample> {
+  // BEGIN gCheckbox#1
+  bool? _state;
+  // END
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
       children: [
         CodeWrapper(
           title: 'default',
-          // BEGIN gCheckbox
-          child: Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: [
-              GRawCheckbox(
-                value: false,
-                onChange: (_) {},
-              ),
-              GRawCheckbox(
-                value: true,
-                onChange: (_) {},
-              ),
-              const GRawCheckbox(
-                value: null,
-                tristate: true,
-                onChange: null,
-              ),
-            ],
+          // BEGIN gCheckbox#2
+          child: GRawCheckbox(
+            value: _state,
+            tristate: true,
+            onChange: (state) {
+              setState(() => _state = state);
+            },
+            child: const Text('checkbox'),
           ),
           // END
           codeBlock: CodeSegments.gCheckbox(context),

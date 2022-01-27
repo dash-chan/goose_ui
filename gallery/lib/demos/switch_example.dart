@@ -12,6 +12,9 @@ class SwitchExample extends StatefulWidget {
 }
 
 class _SwitchExampleState extends State<SwitchExample> {
+  // BEGIN switch1#1
+  bool _state = false;
+  // END
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
@@ -19,9 +22,11 @@ class _SwitchExampleState extends State<SwitchExample> {
         CodeWrapper(
           title: 'default',
           children: [
-            // BEGIN switch1
-            GSwitch(value: false, onChanged: (_) {}),
-            GSwitch(value: true, onChanged: (_) {}),
+            // BEGIN switch1#2
+            GSwitch(
+              value: _state,
+              onChanged: (value) => setState(() => _state = value),
+            ),
             // END
           ],
           codeBlock: CodeSegments.switch1(context),
