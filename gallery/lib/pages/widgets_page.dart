@@ -9,6 +9,7 @@ import 'package:gallery/demos/overlay_example.dart';
 import 'package:gallery/demos/radio_example.dart';
 import 'package:gallery/demos/rating_example.dart';
 import 'package:gallery/demos/scaffold_example.dart';
+import 'package:gallery/demos/select_example.dart';
 import 'package:gallery/demos/switch_example.dart';
 import 'package:goose_ui/goose_ui.dart';
 
@@ -66,6 +67,11 @@ class _WidgetsPageState extends State<WidgetsPage> {
       icon: Icons.padding,
       title: 'popup',
       child: const OverlayExample(),
+    ),
+    WidgetItem(
+      icon: Icons.padding,
+      title: 'Select',
+      child: const SelectExample(),
     ),
   ];
   @override

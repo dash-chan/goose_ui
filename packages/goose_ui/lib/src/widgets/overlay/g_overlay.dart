@@ -18,8 +18,8 @@ class GOverlay {
       if (linked && link != null) return true;
       return false;
     }());
+    if (_entry != null) return hide;
     Widget result = child;
-
     if (linked) {
       result = CompositedTransformFollower(
         link: link!,
@@ -56,12 +56,6 @@ class _OverlayLayout extends SingleChildLayoutDelegate {
 
   @override
   BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
-    print(constraints);
-    return BoxConstraints.tight(Size(100, 100));
-  }
-
-  @override
-  Offset getPositionForChild(Size size, Size childSize) {
-    return Offset.zero;
+    return BoxConstraints.loose(constraints.biggest);
   }
 }

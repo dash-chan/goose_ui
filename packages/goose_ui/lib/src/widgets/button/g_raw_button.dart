@@ -53,6 +53,8 @@ class GRawButton extends StatelessWidget {
   ///阴影
   final List<BoxShadow>? shadow;
 
+  final FocusNode? focusNode;
+
   const GRawButton({
     Key? key,
     required this.onPressed,
@@ -61,8 +63,8 @@ class GRawButton extends StatelessWidget {
     this.iconPosition = IconPosition.left,
     this.iconSpace = 4.0,
     this.width,
-    this.padding = const EdgeInsets.symmetric(horizontal: 12),
     this.height = 32,
+    this.padding = const EdgeInsets.symmetric(horizontal: 12),
     this.margin = EdgeInsets.zero,
     this.shape = const RoundedRectangleBorder(),
     this.borderRadius,
@@ -70,6 +72,7 @@ class GRawButton extends StatelessWidget {
     this.clip = Clip.hardEdge,
     this.elevation = 0.0,
     this.shadow,
+    this.focusNode,
   }) : super(key: key);
 
   @override
@@ -141,6 +144,7 @@ class GRawButton extends StatelessWidget {
             ? null
             : height,
         child: InkWell(
+          focusNode: focusNode,
           borderRadius: borderRadius,
           onTap: onPressed,
           child: _child,
