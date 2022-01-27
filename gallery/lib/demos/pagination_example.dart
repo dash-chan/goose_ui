@@ -18,6 +18,7 @@ class _PaginationExampleState extends State<PaginationExample> {
         GPagination(
           value: _currentPage,
           total: 200,
+          size: 20,
           onChanged: (value) {
             setState(() {
               _currentPage = value;

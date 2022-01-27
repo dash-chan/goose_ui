@@ -21,14 +21,14 @@ class GPagination extends StatelessWidget {
   })  : assert(value >= 1),
         super(key: key);
 
-  int get maxPage => total % size == 0 ? total ~/ 10 : total ~/ 10 + 1;
+  int get maxPage => total % size == 0 ? total ~/ size : total ~/ size + 1;
 
   int get computePage => maxPage >= 10 ? 7 : maxPage;
 
-  bool get showPre => maxPage > 9 && value >= 5;
-  bool get showFirst => maxPage > 9 && value >= 4;
-  bool get showNext => maxPage > 9 && value <= maxPage - 4;
-  bool get showEnd => maxPage > 9 && value <= maxPage - 3;
+  bool get showPre => maxPage >= 10 && value >= 5;
+  bool get showFirst => maxPage >= 10 && value >= 4;
+  bool get showNext => maxPage >= 10 && value <= maxPage - 4;
+  bool get showEnd => maxPage >= 10 && value <= maxPage - 3;
 
   // render items if length less than 9
   List<Widget> _renderSimple() {
