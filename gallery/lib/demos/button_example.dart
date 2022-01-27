@@ -62,6 +62,38 @@ class _ButtonExampleState extends State<ButtonExample> {
           // END
           codeBlock: CodeSegments.gButton4(context),
         ),
+        CodeWrapper(
+          title: ' button icon position',
+          children: [
+            // BEGIN gButton5
+            GRawButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {},
+              child: const Text('BUTTON'),
+              iconPosition: IconPosition.left,
+            ),
+            GRawButton(
+              icon: const Icon(Icons.arrow_forward),
+              onPressed: () {},
+              child: const Text('BUTTON'),
+              iconPosition: IconPosition.right,
+            ),
+            GRawButton(
+              icon: const Icon(Icons.arrow_upward),
+              onPressed: () {},
+              child: const Text('BUTTON'),
+              iconPosition: IconPosition.top,
+            ),
+            GRawButton(
+              icon: const Icon(Icons.arrow_downward),
+              onPressed: () {},
+              child: const Text('BUTTON'),
+              iconPosition: IconPosition.bottom,
+            ),
+            // END
+          ],
+          codeBlock: CodeSegments.gButton5(context),
+        ),
       ],
     );
   }

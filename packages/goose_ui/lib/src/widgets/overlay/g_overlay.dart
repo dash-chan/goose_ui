@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 
 class GOverlay {
-  final BuildContext context;
-  final Widget child;
-  final bool linked;
-  final LayerLink? link;
-  final bool showWhenUnlinked;
+  OverlayEntry? _entry;
+  GOverlay();
 
-  late OverlayEntry _entry;
-
-  GOverlay({
-    required this.context,
-    required this.child,
-    this.linked = false,
-    this.link,
-    this.showWhenUnlinked = true,
+  void Function() show({
+    required BuildContext context,
+    required Widget child,
+    required RelativeRect rect,
+    bool linked = false,
+    LayerLink? link,
+    bool showWhenUnlinked = true,
+    double maxHeight = 600,
   }) {
     assert(() {
       if (!linked && link == null) return true;
@@ -22,17 +19,49 @@ class GOverlay {
       return false;
     }());
     Widget result = child;
+
     if (linked) {
       result = CompositedTransformFollower(
         link: link!,
         child: child,
+        targetAnchor: Alignment.bottomLeft,
+        followerAnchor: Alignment.topLeft,
         showWhenUnlinked: showWhenUnlinked,
       );
     }
+
+    result = CustomSingleChildLayout(
+      delegate: _OverlayLayout(rect: rect),
+      child: result,
+    );
+
     _entry = OverlayEntry(builder: (context) => result);
+    Overlay.of(context)?.insert(_entry!);
+    return hide;
   }
 
-  show() => Overlay.of(context)?.insert(_entry);
+  hide() {
+    _entry?.remove();
+    _entry = null;
+  }
+}
 
-  hide() => _entry.remove();
+class _OverlayLayout extends SingleChildLayoutDelegate {
+  final RelativeRect rect;
+  _OverlayLayout({required this.rect});
+  @override
+  bool shouldRelayout(covariant SingleChildLayoutDelegate oldDelegate) {
+    return true;
+  }
+
+  @override
+  BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
+    print(constraints);
+    return BoxConstraints.tight(Size(100, 100));
+  }
+
+  @override
+  Offset getPositionForChild(Size size, Size childSize) {
+    return Offset.zero;
+  }
 }

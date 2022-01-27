@@ -22,6 +22,7 @@ class PageWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return GScaffold(
       content: ListView.builder(
+        controller: ScrollController(),
         padding: const EdgeInsets.all(16),
         itemBuilder: (context, index) {
           int leftIndex = index * 2;

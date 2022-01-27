@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+enum IconPosition {
+  left,
+  right,
+  top,
+  bottom,
+}
+
 /// GButton
 class GRawButton extends StatelessWidget {
   ///点击事件
@@ -10,6 +17,11 @@ class GRawButton extends StatelessWidget {
 
   /// icon
   final Widget? icon;
+
+  /// icon位置
+  final IconPosition iconPosition;
+
+  final double iconSpace;
 
   /// 宽度
   final double? width;
@@ -46,6 +58,8 @@ class GRawButton extends StatelessWidget {
     required this.onPressed,
     required this.child,
     this.icon,
+    this.iconPosition = IconPosition.left,
+    this.iconSpace = 4.0,
     this.width,
     this.padding = const EdgeInsets.symmetric(horizontal: 12),
     this.height = 32,
@@ -80,15 +94,31 @@ class GRawButton extends StatelessWidget {
       if (isSpecificWidth) {
         _child = Expanded(child: _child);
       }
-      List<Widget> _children = [
-        icon!,
-        const SizedBox(width: 4),
-        _child,
-      ];
-      _child = Row(
-        mainAxisSize: isSpecificWidth ? MainAxisSize.max : MainAxisSize.min,
-        children: _children,
-      );
+      List<Widget> _children = [_child];
+      switch (iconPosition) {
+        case IconPosition.left:
+          _children = [icon!, SizedBox(width: iconSpace), _child];
+          _child = Row(
+            mainAxisSize: isSpecificWidth ? MainAxisSize.max : MainAxisSize.min,
+            children: _children,
+          );
+          break;
+        case IconPosition.top:
+          _children = [icon!, SizedBox(width: iconSpace), _child];
+          _child = Column(mainAxisSize: MainAxisSize.min, children: _children);
+          break;
+        case IconPosition.right:
+          _children = [_child, SizedBox(width: iconSpace), icon!];
+          _child = Row(
+            mainAxisSize: isSpecificWidth ? MainAxisSize.max : MainAxisSize.min,
+            children: _children,
+          );
+          break;
+        case IconPosition.bottom:
+          _children = [_child, SizedBox(width: iconSpace), icon!];
+          _child = Column(mainAxisSize: MainAxisSize.min, children: _children);
+          break;
+      }
     }
 
     if (!isSpecificWidth) {
@@ -106,7 +136,10 @@ class GRawButton extends StatelessWidget {
       color: disabled ? color?.withOpacity(0.22) ?? Colors.grey : color,
       elevation: elevation,
       child: SizedBox(
-        height: height,
+        height: iconPosition == IconPosition.top ||
+                iconPosition == IconPosition.bottom
+            ? null
+            : height,
         child: InkWell(
           borderRadius: borderRadius,
           onTap: onPressed,
