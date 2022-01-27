@@ -6,6 +6,7 @@ import 'package:gallery/demos/checkbox_example.dart';
 import 'package:gallery/demos/expansion_example.dart';
 import 'package:gallery/demos/loading_example.dart';
 import 'package:gallery/demos/overlay_example.dart';
+import 'package:gallery/demos/pagination_example.dart';
 import 'package:gallery/demos/radio_example.dart';
 import 'package:gallery/demos/rating_example.dart';
 import 'package:gallery/demos/scaffold_example.dart';
@@ -72,6 +73,11 @@ class _WidgetsPageState extends State<WidgetsPage> {
       icon: Icons.padding,
       title: 'Select',
       child: const SelectExample(),
+    ),
+    WidgetItem(
+      icon: Icons.padding,
+      title: 'Pagination',
+      child: const PaginationExample(),
     ),
   ];
   @override

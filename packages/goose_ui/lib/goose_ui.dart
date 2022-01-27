@@ -12,6 +12,7 @@ export 'src/widgets/expansion/g_expansion.dart';
 export 'src/widgets/loading/g_loading.dart';
 export 'src/widgets/overlay/g_popup.dart';
 export 'src/widgets/overlay/g_overlay.dart';
+export 'src/widgets/pagination/g_pagination.dart';
 export 'src/widgets/radio/g_raw_radio.dart';
 export 'src/widgets/radio/g_radio_group.dart';
 export 'src/widgets/rating/g_rating_bar.dart';
