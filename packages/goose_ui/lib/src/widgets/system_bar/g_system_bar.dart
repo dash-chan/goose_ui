@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
-class GSystemBar extends StatefulWidget {
-  const GSystemBar({Key? key}) : super(key: key);
+class GSystemBar extends StatelessWidget {
+  final List<Widget>? prefix;
+  final List<Widget>? suffix;
 
-  @override
-  _GSystemBarState createState() => _GSystemBarState();
-}
+  const GSystemBar({Key? key, this.prefix, this.suffix}) : super(key: key);
 
-class _GSystemBarState extends State<GSystemBar> {
   @override
   Widget build(BuildContext context) {
-    //TODO systemBar
-    return Container();
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 24),
+      child: Row(
+        children: [
+          if (prefix != null) ...prefix!,
+          const Spacer(),
+          if (suffix != null) ...suffix!,
+        ],
+      ),
+    );
   }
 }

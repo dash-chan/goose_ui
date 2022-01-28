@@ -16,10 +16,11 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   bool _reverse = false;
 
-  VoidCallback next(int index) => () => setState(() {
+  VoidCallback next(int index) => () {
         _reverse = index < _currentIndex;
         _currentIndex = index;
-      });
+        setState(() {});
+      };
 
   @override
   Widget build(BuildContext context) {

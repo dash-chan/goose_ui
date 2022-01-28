@@ -19,5 +19,6 @@ export 'src/widgets/rating/g_rating_bar.dart';
 export 'src/widgets/scaffold/g_scaffold.dart';
 export 'src/widgets/select/g_select.dart';
 export 'src/widgets/switch/g_switch.dart';
+export 'src/widgets/system_bar/g_system_bar.dart';
 
 export 'src/types/form_type.dart';
