@@ -5,6 +5,7 @@ import 'package:gallery/demos/button_example.dart';
 import 'package:gallery/demos/calendar_example.dart';
 import 'package:gallery/demos/checkbox_example.dart';
 import 'package:gallery/demos/expansion_example.dart';
+import 'package:gallery/demos/input_example.dart';
 import 'package:gallery/demos/loading_example.dart';
 import 'package:gallery/demos/overlay_example.dart';
 import 'package:gallery/demos/pagination_example.dart';
@@ -84,6 +85,11 @@ class _WidgetsPageState extends State<WidgetsPage> {
       icon: Icons.calendar_today_rounded,
       title: 'Calendar',
       child: const CalendarExample(),
+    ),
+    WidgetItem(
+      icon: Icons.text_fields_rounded,
+      title: 'Input',
+      child: const InputExample(),
     ),
   ];
   @override

@@ -12,6 +12,7 @@ export 'src/widgets/checkbox/g_checkbox_group.dart';
 export 'src/widgets/checkbox/g_raw_checkbox.dart';
 export 'src/widgets/drawer/g_drawer.dart';
 export 'src/widgets/expansion/g_expansion.dart';
+export 'src/widgets/input/g_raw_input.dart';
 export 'src/widgets/loading/g_loading.dart';
 export 'src/widgets/overlay/g_popup.dart';
 export 'src/widgets/overlay/g_overlay.dart';
