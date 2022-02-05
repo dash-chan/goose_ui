@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gallery/codeviewer/code_segments.dart';
 import 'package:gallery/widgets/code_wrapper.dart';
 import 'package:gallery/widgets/page_wrapper.dart';
 import 'package:goose_ui/goose_ui.dart';
@@ -18,16 +19,20 @@ class _InputExampleState extends State<InputExample> {
         CodeWrapper(
           title: 'default',
           children: [
+            // BEGIN input
             GRawInput(),
+            // END
           ],
-          codeBlock: TextSpan(),
+          codeBlock: CodeSegments.input(context),
         ),
         CodeWrapper(
           title: 'rounded',
           children: [
+            // BEGIN input2
             GRawInput(rounded: true),
+            // END
           ],
-          codeBlock: TextSpan(),
+          codeBlock: CodeSegments.input2(context),
         ),
       ],
     );

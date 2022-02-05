@@ -38,7 +38,7 @@ class _OverlayExampleState extends State<OverlayExample> {
                     obj.localToGlobal(obj.size.bottomLeft(Offset.zero)),
                     obj.localToGlobal(obj.size.bottomRight(Offset.zero)),
                   ),
-                  Offset.zero & Size(100, 200),
+                  Offset.zero & const Size(100, 200),
                 );
                 _overlay.show(
                   context: context,

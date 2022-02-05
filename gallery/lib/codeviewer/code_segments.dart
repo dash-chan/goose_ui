@@ -9,6 +9,251 @@ import 'package:flutter/material.dart';
 import 'package:gallery/codeviewer/code_style.dart';
 
 class CodeSegments {
+  static TextSpan calendar0(BuildContext context) {
+    final codeStyle = CodeStyle.of(context);
+    return TextSpan(children: [
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:flutter/material.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/code_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/page_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:goose_ui/goose_ui.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+      TextSpan(style: codeStyle.classStyle, text: 'GRawCalendar'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(
+          style: codeStyle.baseStyle, text: '\u000a              showToday'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.keywordStyle, text: 'true'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              year'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.numberStyle, text: '2022'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              month'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.numberStyle, text: '1'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              offset'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '-'),
+      TextSpan(style: codeStyle.numberStyle, text: '1'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a            '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+    ]);
+  }
+
+  static TextSpan calendar1(BuildContext context) {
+    final codeStyle = CodeStyle.of(context);
+    return TextSpan(children: [
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:flutter/material.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/code_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/page_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:goose_ui/goose_ui.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+      TextSpan(style: codeStyle.classStyle, text: 'SizedBox'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              height'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.numberStyle, text: '500'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              child'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'GCalendar'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '.'),
+      TextSpan(style: codeStyle.baseStyle, text: 'date'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(
+          style: codeStyle.baseStyle, text: '\u000a                firstDate'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'DateTime'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.numberStyle, text: '2020'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.numberStyle, text: '1'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(
+          style: codeStyle.baseStyle, text: '\u000a                lastDate'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'DateTime'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.numberStyle, text: '2025'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.numberStyle, text: '1'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(
+          style: codeStyle.baseStyle,
+          text: '\u000a                dateSelected'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: 'value'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ')'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '{'),
+      TextSpan(
+          style: codeStyle.baseStyle, text: '\u000a                  print'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: 'value'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ');'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a                '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '},'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a            '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+    ]);
+  }
+
+  static TextSpan calendar2(BuildContext context) {
+    final codeStyle = CodeStyle.of(context);
+    return TextSpan(children: [
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:flutter/material.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/code_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/page_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:goose_ui/goose_ui.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+      TextSpan(style: codeStyle.classStyle, text: 'SizedBox'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              height'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.numberStyle, text: '500'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              child'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'GCalendar'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '.'),
+      TextSpan(style: codeStyle.baseStyle, text: 'range'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(
+          style: codeStyle.baseStyle, text: '\u000a                firstDate'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'DateTime'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.numberStyle, text: '2020'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.numberStyle, text: '1'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(
+          style: codeStyle.baseStyle, text: '\u000a                lastDate'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.classStyle, text: 'DateTime'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.numberStyle, text: '2025'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ','),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.numberStyle, text: '1'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(
+          style: codeStyle.baseStyle,
+          text: '\u000a                dateRangeSelected'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: 'range'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ')'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '{'),
+      TextSpan(
+          style: codeStyle.baseStyle, text: '\u000a                  print'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: 'range'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ');'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a                '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '},'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a              '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a            '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+    ]);
+  }
+
   static TextSpan expansion(BuildContext context) {
     final codeStyle = CodeStyle.of(context);
     return TextSpan(children: [
@@ -798,6 +1043,99 @@ class CodeSegments {
       TextSpan(style: codeStyle.keywordStyle, text: 'true'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a          '),
+      TextSpan(style: codeStyle.punctuationStyle, text: '),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+    ]);
+  }
+
+  static TextSpan input(BuildContext context) {
+    final codeStyle = CodeStyle.of(context);
+    return TextSpan(children: [
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:flutter/material.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/codeviewer/code_segments.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/code_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/page_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:goose_ui/goose_ui.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+      TextSpan(style: codeStyle.classStyle, text: 'GRawInput'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '(),'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+    ]);
+  }
+
+  static TextSpan input2(BuildContext context) {
+    final codeStyle = CodeStyle.of(context);
+    return TextSpan(children: [
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:flutter/material.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/codeviewer/code_segments.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/code_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:gallery/widgets/page_wrapper.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'import'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(
+          style: codeStyle.stringStyle,
+          text: '\u0027package:goose_ui/goose_ui.dart\u0027'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ';'),
+      TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
+      TextSpan(style: codeStyle.classStyle, text: 'GRawInput'),
+      TextSpan(style: codeStyle.punctuationStyle, text: '('),
+      TextSpan(style: codeStyle.baseStyle, text: 'rounded'),
+      TextSpan(style: codeStyle.punctuationStyle, text: ':'),
+      TextSpan(style: codeStyle.baseStyle, text: ' '),
+      TextSpan(style: codeStyle.keywordStyle, text: 'true'),
       TextSpan(style: codeStyle.punctuationStyle, text: '),'),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a\u000a'),
     ]);

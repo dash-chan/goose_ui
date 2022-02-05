@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gallery/codeviewer/code_segments.dart';
 import 'package:gallery/widgets/code_wrapper.dart';
 import 'package:gallery/widgets/page_wrapper.dart';
 import 'package:goose_ui/goose_ui.dart';
@@ -17,47 +18,49 @@ class _CalendarExampleState extends State<CalendarExample> {
       children: [
         CodeWrapper(
           title: 'default',
-          children: [
+          children: const [
+            // BEGIN calendar0
             GRawCalendar(
               showToday: true,
               year: 2022,
               month: 1,
               offset: -1,
             ),
+            // END
           ],
-          codeBlock: TextSpan(),
+          codeBlock: CodeSegments.calendar0(context),
         ),
         CodeWrapper(
           title: 'default',
           children: [
+            // BEGIN calendar1
             SizedBox(
               height: 500,
               child: GCalendar.date(
                 firstDate: DateTime(2020, 1),
                 lastDate: DateTime(2025, 1),
-                dateSelected: (value) {
-                  print(value);
-                },
+                dateSelected: (value) {},
               ),
             ),
+            // END
           ],
-          codeBlock: TextSpan(),
+          codeBlock: CodeSegments.calendar1(context),
         ),
         CodeWrapper(
           title: 'default',
           children: [
+            // BEGIN calendar2
             SizedBox(
               height: 500,
               child: GCalendar.range(
                 firstDate: DateTime(2020, 1),
                 lastDate: DateTime(2025, 1),
-                dateRangeSelected: (range) {
-                  print(range);
-                },
+                dateRangeSelected: (range) {},
               ),
             ),
+            // END
           ],
-          codeBlock: TextSpan(),
+          codeBlock: CodeSegments.calendar2(context),
         ),
       ],
     );
