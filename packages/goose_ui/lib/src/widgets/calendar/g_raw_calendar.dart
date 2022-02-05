@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:goose_ui/src/extensions/datetime_extension.dart';
-import 'package:goose_ui/src/extensions/list_extension.dart';
-import 'package:goose_ui/src/i10n/goose_localizations.dart';
 
 typedef DayBuilder = Widget Function(
   bool isToday,

@@ -1,18 +1,5 @@
 import 'package:flutter/material.dart';
 
-//TODO RatingBar
-class _GRatingBar extends StatelessWidget {
-  final num value;
-  const _GRatingBar({Key? key, required this.value}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Row(),
-    );
-  }
-}
-
 class GIntegerRatingBar extends StatefulWidget {
   final Icon icon;
   final Icon selectedIcon;

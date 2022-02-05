@@ -42,7 +42,6 @@ class _GCalendarState extends State<GCalendar> {
 
   DateTime? _dateRangeStart;
   DateTime? _dateRangeEnd;
-  DateTimeRange? _selectedRange;
 
   int getMonths(DateTime first, DateTime last) {
     var prefix = first.month - 1;
@@ -204,6 +203,7 @@ class _GCalendarState extends State<GCalendar> {
                         // date select mode
                         if (widget.dateSelected != null) {
                           _selectedDate = date;
+                          widget.dateSelected!(date);
                         }
 
                         if (widget.dateRangeSelected != null) {
@@ -215,14 +215,20 @@ class _GCalendarState extends State<GCalendar> {
                             _dateRangeStart = date;
                             _dateRangeEnd = null;
                           }
-                        }
-                        if (_dateRangeStart != null && _dateRangeEnd != null) {
-                          if (_dateRangeStart!.isAfter(_dateRangeEnd!)) {
-                            var cache = _dateRangeStart!;
-                            _dateRangeStart = _dateRangeEnd;
-                            _dateRangeEnd = cache;
+                          if (_dateRangeStart != null &&
+                              _dateRangeEnd != null) {
+                            if (_dateRangeStart!.isAfter(_dateRangeEnd!)) {
+                              var cache = _dateRangeStart!;
+                              _dateRangeStart = _dateRangeEnd;
+                              _dateRangeEnd = cache;
+                            }
+                            widget.dateRangeSelected!(DateTimeRange(
+                              start: _dateRangeStart!,
+                              end: _dateRangeEnd!,
+                            ));
                           }
                         }
+
                         setState(() {});
                       },
                       shape: border,
