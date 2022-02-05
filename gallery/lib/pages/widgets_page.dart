@@ -2,6 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery/codeviewer/code_style.dart';
 import 'package:gallery/demos/button_example.dart';
+import 'package:gallery/demos/calendar_example.dart';
 import 'package:gallery/demos/checkbox_example.dart';
 import 'package:gallery/demos/expansion_example.dart';
 import 'package:gallery/demos/loading_example.dart';
@@ -70,14 +71,19 @@ class _WidgetsPageState extends State<WidgetsPage> {
       child: const OverlayExample(),
     ),
     WidgetItem(
-      icon: Icons.padding,
+      icon: Icons.select_all,
       title: 'Select',
       child: const SelectExample(),
     ),
     WidgetItem(
-      icon: Icons.padding,
+      icon: Icons.pages,
       title: 'Pagination',
       child: const PaginationExample(),
+    ),
+    WidgetItem(
+      icon: Icons.calendar_today_rounded,
+      title: 'Calendar',
+      child: const CalendarExample(),
     ),
   ];
   @override
