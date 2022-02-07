@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:goose_ui/src/extensions/datetime_extension.dart';
 
-typedef DayBuilder = Widget Function(
-  bool isToday,
-  bool isCurrentMonth,
-  DateTime date,
-  DateTime currentMonth,
-);
+typedef RawDayBuilder = Widget Function({
+  required bool isToday,
+  required bool isCurrentMonth,
+  required bool isLastMonth,
+  required bool isNextMonth,
+  required DateTime date,
+  required DateTime currentMonth,
+});
 
 class GRawCalendar extends StatefulWidget {
   final bool showToday;
   final int offset;
   final int year;
   final int month;
-  final DayBuilder? dayBuilder;
+  final RawDayBuilder? dayBuilder;
   final double aspectRatio;
 
   const GRawCalendar(
@@ -76,19 +78,24 @@ class _GRawCalendarState extends State<GRawCalendar> {
           color = Colors.blue.withOpacity(0.3);
         }
         if (widget.dayBuilder != null) {
+          final currentMonth = DateTime(widget.year, widget.month);
+          bool isLastMonth = false;
+          bool isNextMonth = false;
+          if (!isCurrentMonth) {
+            isLastMonth = e.isBefore(currentMonth);
+            isNextMonth = e.isAfter(currentMonth);
+          }
           return widget.dayBuilder!(
-            isToday,
-            isCurrentMonth,
-            e,
-            DateTime(widget.year, widget.month),
-          );
-        }
-        if (widget.dayBuilder != null) {
-          return widget.dayBuilder!(
-            isToday,
-            isCurrentMonth,
-            e,
-            DateTime(widget.year, widget.month),
+            isToday: isToday,
+            isCurrentMonth: isCurrentMonth,
+            isLastMonth: isLastMonth,
+            isNextMonth: isNextMonth,
+            currentMonth: currentMonth,
+            date: e,
+
+            // isCurrentMonth,
+            // e,
+            // DateTime(widget.year, widget.month),
           );
         }
         return Center(

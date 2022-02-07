@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:goose_ui/goose_ui.dart';
 import 'package:goose_ui/src/extensions/datetime_extension.dart';
 
+// TODO
+typedef DayBuilder = Function();
+
+/// 日历
 class GCalendar extends StatefulWidget {
   final DateTime firstDate;
   final DateTime lastDate;
@@ -125,7 +129,13 @@ class _GCalendarState extends State<GCalendar> {
                 year: currentDate.year,
                 month: currentDate.month,
                 aspectRatio: 2,
-                dayBuilder: (isToday, isCurrentMonth, date, monthDate) {
+                dayBuilder: (
+                    {required bool isToday,
+                    required bool isCurrentMonth,
+                    required bool isLastMonth,
+                    required bool isNextMonth,
+                    required DateTime date,
+                    required DateTime currentMonth}) {
                   Color? color;
                   Color backgroundColor = Colors.transparent;
                   Color selectedColor = Colors.transparent;
@@ -187,18 +197,16 @@ class _GCalendarState extends State<GCalendar> {
                     child: GRawButton(
                       onPressed: () {
                         // not current month select
-                        if (!isCurrentMonth) {
-                          if (date.isBefore(monthDate)) {
-                            _pageController.previousPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOutCubic,
-                            );
-                          } else if (date.isAfter(monthDate)) {
-                            _pageController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOutCubic,
-                            );
-                          }
+                        if (isLastMonth) {
+                          _pageController.previousPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOutCubic,
+                          );
+                        } else if (isNextMonth) {
+                          _pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOutCubic,
+                          );
                         }
                         // date select mode
                         if (widget.dateSelected != null) {
