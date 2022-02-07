@@ -26,12 +26,25 @@ melos bs
 
 ## Current Widgets
 
+* [x] AppBar
+* [x] AppMenu
+* [x] AppTitleBar
 * [x] Button
+* [x] Calendar
+* [x] Card
 * [x] Checkbox
+* [x] Drawer
+* [x] Expansion
+* [x] Input
+* [x] Loading
+* [x] Menu
+* [x] Pagination
 * [x] Radio
 * [x] Rating
 * [x] Scaffold
+* [x] Select
 * [x] Switch
+* [x] SystemBar
 
 ## RoadMap
 
