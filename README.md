@@ -3,6 +3,7 @@
 # goose_ui
 an elegant uikit for flutter desktop. 
 
+> caution: package is in <span style="color:red">development.</span>,not for product usage.
 ## Getting Started
 
 ### run gallery 

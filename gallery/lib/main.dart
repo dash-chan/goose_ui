@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gallery/home_page.dart';
+import 'package:gallery/l10n/s.dart';
 import 'package:gallery/utils/desktop_util.dart';
 import 'package:goose_ui/goose_ui.dart';
 import 'package:window_manager/window_manager.dart';
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      localizationsDelegates: const [
+      localizationsDelegates: [
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

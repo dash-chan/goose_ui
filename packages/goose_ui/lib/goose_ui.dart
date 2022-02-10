@@ -29,4 +29,4 @@ export 'src/widgets/system_bar/g_system_bar.dart';
 export 'src/types/form_type.dart';
 
 // i10n
-export 'src/i10n/goose_localizations.dart';
+export 'src/l10n/goose_localizations.dart';

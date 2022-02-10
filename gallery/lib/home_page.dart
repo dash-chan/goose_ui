@@ -1,5 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery/l10n/s.dart';
 import 'package:gallery/pages/main_page.dart';
 import 'package:gallery/pages/widgets_page.dart';
 import 'package:goose_ui/goose_ui.dart';
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return GScaffold(
       appBar: GAppBar(
-        title: const Text('Goose UI'),
+        title: Text(S.of(context).appName),
         actions: [
           GRawButton(
             onPressed: next(0),

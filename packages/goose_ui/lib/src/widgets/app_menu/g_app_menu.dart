@@ -50,7 +50,7 @@ class _GAppMenuState extends State<GAppMenu> {
             leading: same ? icon : Icon(e.icon),
             shape: widget.shape,
             title: Text(
-              e.title,
+              e.title(context),
               softWrap: false,
             ),
             onTap: () {
@@ -77,7 +77,7 @@ class GAppMenuItem {
   final List<GAppMenuItem>? children;
   final IconData icon;
   final IconData? activeIcon;
-  final String title;
+  final String Function(BuildContext context) title;
   final String? path;
   const GAppMenuItem({
     this.children,
@@ -92,9 +92,6 @@ class GAppMenuItem {
 
   @override
   bool operator ==(Object other) {
-    return other is GAppMenuItem &&
-        other.icon == icon &&
-        other.path == path &&
-        other.title == title;
+    return other is GAppMenuItem && other.icon == icon && other.path == path;
   }
 }

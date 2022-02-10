@@ -1,0 +1,16 @@
+{
+  "appName": "goose UI",
+  "button": "按钮",
+  "calendar": "日历",
+  "checkbox": "多选",
+  "expansion": "扩展栏",
+  "input": "输入",
+  "loading": "加载",
+  "pagination": "分页",
+  "popup": "弹出框",
+  "radio": "单选",
+  "ratingBar": "评分",
+  "scaffold": "脚手架",
+  "select": "选择",
+  "switchIt": "开关"
+}

@@ -14,6 +14,7 @@ import 'package:gallery/demos/rating_example.dart';
 import 'package:gallery/demos/scaffold_example.dart';
 import 'package:gallery/demos/select_example.dart';
 import 'package:gallery/demos/switch_example.dart';
+import 'package:gallery/l10n/s.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class WidgetsPage extends StatefulWidget {
@@ -28,67 +29,67 @@ class _WidgetsPageState extends State<WidgetsPage> {
   final _menus = <WidgetItem>[
     WidgetItem(
       icon: Icons.smart_button_rounded,
-      title: '按钮',
+      title: (context) => S.of(context).button,
       child: const ButtonExample(),
     ),
     WidgetItem(
       icon: Icons.check_box_rounded,
-      title: 'Checkbox',
+      title: (context) => S.of(context).checkbox,
       child: const CheckboxExample(),
     ),
     WidgetItem(
       icon: Icons.radio_rounded,
-      title: 'Radio',
+      title: (context) => S.of(context).radio,
       child: const RadioExample(),
     ),
     WidgetItem(
       icon: Icons.backpack_rounded,
-      title: 'Scaffold',
+      title: (context) => S.of(context).scaffold,
       child: const ScaffoldExample(),
     ),
     WidgetItem(
       icon: Icons.switch_left,
-      title: 'switch',
+      title: (context) => S.of(context).switchIt,
       child: const SwitchExample(),
     ),
     WidgetItem(
       icon: Icons.star_border_rounded,
-      title: 'rating bar',
+      title: (context) => S.of(context).ratingBar,
       child: const RatingExample(),
     ),
     WidgetItem(
       icon: Icons.expand,
-      title: 'expansion',
+      title: (context) => S.of(context).expansion,
       child: const ExpansionExample(),
     ),
     WidgetItem(
       icon: Icons.circle_outlined,
-      title: 'loading',
+      title: (context) => S.of(context).loading,
       child: const LoadingExample(),
     ),
     WidgetItem(
       icon: Icons.padding,
-      title: 'popup',
+      title: (context) => S.of(context).popup,
       child: const OverlayExample(),
     ),
     WidgetItem(
       icon: Icons.select_all,
-      title: 'Select',
+      title: (context) => S.of(context).select,
       child: const SelectExample(),
     ),
     WidgetItem(
       icon: Icons.pages,
-      title: 'Pagination',
+      title: (context) => S.of(context).pagination,
       child: const PaginationExample(),
     ),
     WidgetItem(
       icon: Icons.calendar_today_rounded,
-      title: 'Calendar',
+      title: (context) => S.of(context).calendar,
       child: const CalendarExample(),
     ),
     WidgetItem(
       icon: Icons.text_fields_rounded,
-      title: 'Input',
+      title: (context) => S.of(context).input,
       child: const InputExample(),
     ),
   ];
@@ -133,7 +134,7 @@ class WidgetItem extends GAppMenuItem {
   final Widget child;
   WidgetItem({
     required IconData icon,
-    required String title,
+    required String Function(BuildContext context) title,
     required this.child,
   }) : super(
           icon: icon,
