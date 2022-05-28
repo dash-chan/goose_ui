@@ -1,9 +1,25 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 /// Ant Design Color
 ///
 /// ref: [Ant Design Color](https://ant.design/docs/spec/colors-cn)
+/// 
+/// color list:
+/// 
+/// * Dust Red / 薄暮
+/// * Volcano / 火山
+/// * Sunset Orange / 日暮
+/// * Calendula Gold / 金盏花
+/// * Sunrise Yellow / 日出
+/// * Lime / 青柠
+/// * Polar Green / 极光绿
+/// * Cyan / 明青
+/// * Daybreak Blue / 拂晓蓝
+/// * Geek Blue / 极客蓝
+/// * Golden Purple / 酱紫
+/// * Magenta / 法式洋红
+/// 
 class AntColors {
   const AntColors._();
 
@@ -187,7 +203,7 @@ class AntColors {
     1000: Color(0xff520339),
   });
 
-  /// ## 中性色板
+  /// ## 中性色板 neutral color palette
   /// 中性色包含了黑、白、灰。在蚂蚁中后台的网页设计中被大量使用到，
   /// 合理地选择中性色能够令页面信息具备良好的主次关系，助力阅读体验。
   /// Ant Design 的中性色板一共包含了从白到黑的 13 个颜色。
@@ -207,6 +223,7 @@ class AntColors {
     1300: Color(0xff000000),
   });
 
+  /// all ant colors
   static const List<AntColor> items = [
     dustRed,
     volcano,
@@ -223,18 +240,39 @@ class AntColors {
   ];
 }
 
+/// Defines a single color as well a color swatch with ten shades of the color.
 class AntColor extends ColorSwatch<int> {
+  /// Creates a color swatch and a set of 10 shades of the color.
   const AntColor(super.primary, super.swatch);
 
+  /// Color-1
   Color get shade100 => this[100]!;
+
+  /// Color-2
   Color get shade200 => this[200]!;
+
+  /// Color-3
   Color get shade300 => this[300]!;
+
+  /// Color-4
   Color get shade400 => this[400]!;
+
+  /// Color-5
   Color get shade500 => this[500]!;
+
+  /// Color-6, normally this is the primary color
   Color get shade600 => this[600]!;
+
+  /// Color-7
   Color get shade700 => this[700]!;
+
+  /// Color-8
   Color get shade800 => this[800]!;
+
+  /// Color-9
   Color get shade900 => this[900]!;
+
+  /// Color-10
   Color get shade1000 => this[1000]!;
 
   Color get primary => shade600;
@@ -257,6 +295,7 @@ class AntColor extends ColorSwatch<int> {
     return AntColor(primaryColor.value, swatch);
   }
 
+  /// get computed hue
   static double _computeHue(double hue, bool light, int distance) {
     const hueStep = 2;
 
@@ -278,6 +317,7 @@ class AntColor extends ColorSwatch<int> {
     return result;
   }
 
+  /// get computed saturation
   static double _computeSaturation(HSVColor color, bool isLight, int distance) {
     final saturation = color.saturation;
     if (color.saturation == 0 && color.hue == 0) return saturation;
@@ -304,6 +344,7 @@ class AntColor extends ColorSwatch<int> {
     return double.parse(result.toStringAsFixed(2));
   }
 
+  /// get computed hsv value
   static double _computeValue(double value, bool isLight, int distance) {
     const brightnessStep1 = 0.05;
     const brightnessStep2 = 0.15;
@@ -320,10 +361,19 @@ class AntColor extends ColorSwatch<int> {
   }
 }
 
+/// Defines a single color as well a color swatch with ten shades of the color.
+/// same as AntColor but has 3 more shades of the color.
+
 class AntNeutralColor extends AntColor {
+  /// Creates a color swatch and a set of 13 shades of the color.
   const AntNeutralColor(super.primary, super.swatch);
 
+  /// Color-11
   Color get shade1100 => this[1100]!;
+
+  /// Color-12
   Color get shade1200 => this[1200]!;
+
+  /// Color-13
   Color get shade1300 => this[1300]!;
 }

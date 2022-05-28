@@ -1,7 +1,7 @@
 name: ant_color
-description: A new Flutter package project.
+description: ant design colors. includes 120 colors & provider a way to self generated.
 version: 0.0.1
-homepage:
+homepage: https://github.com/goose-kit/goose_ui/tree/main/packages/ant_color
 
 environment:
   sdk: ">=2.17.1 <3.0.0"
