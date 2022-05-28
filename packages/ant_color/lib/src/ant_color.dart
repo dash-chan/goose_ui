@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 
 /// Ant Design Color
 ///
 /// ref: [Ant Design Color](https://ant.design/docs/spec/colors-cn)
-/// 
+///
 /// color list:
-/// 
+///
 /// * Dust Red / 薄暮
 /// * Volcano / 火山
 /// * Sunset Orange / 日暮
@@ -19,7 +18,7 @@ import 'package:flutter/painting.dart';
 /// * Geek Blue / 极客蓝
 /// * Golden Purple / 酱紫
 /// * Magenta / 法式洋红
-/// 
+///
 class AntColors {
   const AntColors._();
 
