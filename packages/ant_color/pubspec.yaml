@@ -1,6 +1,6 @@
 name: ant_color
 description: ant design colors. includes 120 colors & provider a way to self generated.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/goose-kit/goose_ui/tree/main/packages/ant_color
 
 environment:

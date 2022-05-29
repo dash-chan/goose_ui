@@ -1,6 +1,6 @@
 name: ant_icons
-description: A new Flutter package project.
-version: 0.0.1
+description: ant design icons. includes 120 icons.
+version: 0.0.2
 homepage: https://github.com/goose-kit/goose_ui/tree/main/packages/ant_icons
 
 environment:

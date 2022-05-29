@@ -1,1 +1,0 @@
-# goose_icons
