@@ -1,4 +1,4 @@
-import 'package:ant_design_icons/ant_design_icons.dart';
+import 'package:antd_icons/antd_icons.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -39,9 +39,9 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisSpacing: 8,
         ),
         children: [
-          AntDesignIcons.filled.accountBook.svg(),
-          AntDesignIcons.outlined.accountBook.svg(),
-          AntDesignIcons.twoTone.accountBook.svg(),
+          AntdIcons.filled.accountBook.svg(),
+          AntdIcons.outlined.accountBook.svg(),
+          AntdIcons.twoTone.accountBook.svg(),
         ],
       ),
     );
