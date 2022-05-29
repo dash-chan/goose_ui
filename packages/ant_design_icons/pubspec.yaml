@@ -1,0 +1,45 @@
+name: ant_design_icons
+description: ant design icons. includes 120 icons.
+version: 0.0.2
+homepage: https://github.com/goose-kit/goose_ui/tree/main/packages/ant_design_icons
+
+environment:
+  sdk: ">=2.17.1 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.1.11
+  flutter_gen_runner: ^4.2.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # To add assets to your package, add an assets section, like this:
+  assets:
+    - assets/filled/
+    - assets/outlined/
+    - assets/twotone/
+
+
+flutter_gen:
+  output: lib/gen/
+  line_length: 80
+
+  assets:
+    enabled: true
+    package_parameter_enabled: true
+
+  integrations:
+    flutter_svg: true
+    
