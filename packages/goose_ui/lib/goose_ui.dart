@@ -1,7 +1,5 @@
 library goose_ui;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/enums/enums.dart';
+
+export 'src/widgets/ink_pulse/ink_pulse.dart';
