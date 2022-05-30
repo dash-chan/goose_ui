@@ -11,36 +11,34 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    return ATheme(
+      data: AThemeData(
+        buttonTheme: const AButtonThemeData(
+          autoInsertSpaceInButton: true,
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      child: MaterialApp(
+        title: 'Goose UI',
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(title: 'Goose UI'),
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -55,15 +53,33 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: InkWell(
-          onTap: () {},
-          splashColor: Colors.blue,
-          splashFactory: InkPulse.splashFactory,
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            child: Text('TEST'),
-          ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(12),
+        child: Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: [
+            for (var rounded in [true, false])
+              for (var size in ASize.values)
+                for (var type in AButtonType.values)
+                  AButton(
+                    onPressed: () {},
+                    buttonType: type,
+                    size: size,
+                    rounded: rounded,
+                    child: Text(type.name),
+                  ),
+            AButton(
+              onPressed: () {},
+              buttonType: AButtonType.primary,
+              size: ASize.medium,
+              child: const Text('空格'),
+            ),
+            AIconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.search),
+            ),
+          ],
         ),
       ),
     );

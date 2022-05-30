@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 const Duration _kFadeOutDuration = Duration(milliseconds: 300);
 
 /// a ink pulse feature.
@@ -45,6 +46,8 @@ class InkPulse extends InteractiveInkFeature {
   /// Used to specify this type of ink splash for an [InkWell], [InkResponse],
   /// material [Theme], or [ButtonStyle].
   static const InteractiveInkFeatureFactory splashFactory = _InkPulseFactory();
+  static const InteractiveInkFeatureFactory noSplashFactory =
+      _InkNoPulseFactory();
 
   void _handleAnimationStatusChanged(AnimationStatus status) {
     if (status == AnimationStatus.completed) {
@@ -55,11 +58,6 @@ class InkPulse extends InteractiveInkFeature {
   @override
   void confirm() {
     _fadeOutController.animateTo(1, duration: _kFadeOutDuration);
-  }
-
-  @override
-  void cancel() {
-    dispose();
   }
 
   @override
@@ -86,6 +84,18 @@ class InkPulse extends InteractiveInkFeature {
   }
 }
 
+class NoInkFeature extends InteractiveInkFeature {
+  NoInkFeature(
+      {required super.controller,
+      required super.referenceBox,
+      required super.color});
+
+  @override
+  void paintFeature(Canvas canvas, Matrix4 transform) {
+    return;
+  }
+}
+
 class _InkPulseFactory extends InteractiveInkFeatureFactory {
   const _InkPulseFactory();
 
@@ -109,6 +119,27 @@ class _InkPulseFactory extends InteractiveInkFeatureFactory {
       borderRadius: borderRadius,
       shapeBorder: customBorder,
     );
+  }
+}
+
+class _InkNoPulseFactory extends InteractiveInkFeatureFactory {
+  const _InkNoPulseFactory();
+
+  @override
+  InteractiveInkFeature create(
+      {required MaterialInkController controller,
+      required RenderBox referenceBox,
+      required Offset position,
+      required Color color,
+      required TextDirection textDirection,
+      bool containedInkWell = false,
+      RectCallback? rectCallback,
+      BorderRadius? borderRadius,
+      ShapeBorder? customBorder,
+      double? radius,
+      VoidCallback? onRemoved}) {
+    return NoInkFeature(
+        controller: controller, referenceBox: referenceBox, color: color);
   }
 }
 
