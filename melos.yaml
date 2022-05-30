@@ -3,3 +3,6 @@ name: goose_ui
 packages:
   - packages/**
   - gallery/**
+
+ignore:
+  - packages/**/example
