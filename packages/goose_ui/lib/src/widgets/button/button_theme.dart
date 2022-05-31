@@ -8,12 +8,42 @@ class AButtonThemeData {
     this.primaryColor,
     this.normalColor,
     this.pulseColor,
+    this.iconSpacing = 4,
   });
 
   final bool autoInsertSpaceInButton;
   final Color? primaryColor;
   final Color? normalColor;
   final Color? pulseColor;
+  final double iconSpacing;
+
+  AButtonThemeData copyWith({
+    bool? autoInsertSpaceInButton,
+    Color? primaryColor,
+    Color? normalColor,
+    Color? pulseColor,
+    double? iconSpacing,
+  }) {
+    return AButtonThemeData(
+      autoInsertSpaceInButton:
+          autoInsertSpaceInButton ?? this.autoInsertSpaceInButton,
+      primaryColor: primaryColor ?? this.primaryColor,
+      normalColor: normalColor ?? this.normalColor,
+      pulseColor: pulseColor ?? this.pulseColor,
+      iconSpacing: iconSpacing ?? this.iconSpacing,
+    );
+  }
+
+  AButtonThemeData merge(AButtonThemeData? other) {
+    if (other == null) return this;
+    return copyWith(
+      autoInsertSpaceInButton: other.autoInsertSpaceInButton,
+      primaryColor: other.primaryColor,
+      normalColor: other.normalColor,
+      pulseColor: other.pulseColor,
+      iconSpacing: other.iconSpacing,
+    );
+  }
 
   @override
   bool operator ==(Object other) {
@@ -23,7 +53,8 @@ class AButtonThemeData {
         other.autoInsertSpaceInButton == autoInsertSpaceInButton &&
         other.primaryColor == primaryColor &&
         other.normalColor == normalColor &&
-        other.pulseColor == pulseColor;
+        other.pulseColor == pulseColor &&
+        other.iconSpacing == iconSpacing;
   }
 
   @override
@@ -31,7 +62,8 @@ class AButtonThemeData {
     return autoInsertSpaceInButton.hashCode ^
         primaryColor.hashCode ^
         normalColor.hashCode ^
-        pulseColor.hashCode;
+        pulseColor.hashCode ^
+        iconSpacing.hashCode;
   }
 }
 

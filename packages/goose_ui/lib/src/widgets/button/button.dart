@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goose_ui/src/themes/theme.dart';
 import 'package:goose_ui/src/widgets/button/button_shape.dart';
 
 import '../../enums/enums.dart';
@@ -7,12 +8,11 @@ import 'button_theme.dart';
 import 'button_type.dart';
 
 export 'button_type.dart';
-export 'icon_button.dart';
 export 'button_theme.dart';
 
 class AButton extends StatefulWidget {
   const AButton({
-    Key? key,
+    super.key,
     this.size,
     required this.onPressed,
     required this.child,
@@ -24,7 +24,26 @@ class AButton extends StatefulWidget {
     this.autoInsertSpaceInButton,
     this.padding,
     this.rounded = false,
-  }) : super(key: key);
+    this.danger = false,
+  });
+
+  AButton.icon({
+    super.key,
+    required Widget icon,
+    double? spacing,
+    Widget? content,
+    this.size,
+    required this.onPressed,
+    this.buttonType = AButtonType.original,
+    this.shape,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.pulseColor,
+    this.autoInsertSpaceInButton,
+    this.padding,
+    this.rounded = false,
+    this.danger = false,
+  }) : child = _IconContent(icon: icon, content: content, spacing: spacing);
 
   final ASize? size;
   final VoidCallback? onPressed;
@@ -37,6 +56,7 @@ class AButton extends StatefulWidget {
   final bool? autoInsertSpaceInButton;
   final EdgeInsets? padding;
   final bool rounded;
+  final bool danger;
 
   @override
   State<AButton> createState() => _AButtonState();
@@ -86,12 +106,20 @@ class _AButtonState extends State<AButton> {
     }
   }
 
+  Color get _primary {
+    if (widget.danger) {
+      return ATheme.of(context).errorColor;
+    } else {
+      return _theme.primaryColor ?? Colors.blue;
+    }
+  }
+
   Color get _backgroundColor {
     if (widget.backgroundColor != null) return widget.backgroundColor!;
 
     switch (widget.buttonType) {
       case AButtonType.primary:
-        return _theme.primaryColor ?? Colors.blue;
+        return _primary;
       case AButtonType.dashed:
       case AButtonType.link:
       case AButtonType.text:
@@ -108,14 +136,15 @@ class _AButtonState extends State<AButton> {
       case AButtonType.dashed:
       case AButtonType.text:
       case AButtonType.original:
+        if (widget.danger) return ATheme.of(context).errorColor;
         return Colors.black;
       case AButtonType.link:
-        return _theme.primaryColor ?? Colors.blue;
+        return _primary;
     }
   }
 
   BorderSide get _side {
-    Color color = _theme.primaryColor ?? Colors.blue;
+    Color color = _primary;
     if (!_hover) {
       color = _theme.normalColor ?? Colors.grey;
     }
@@ -134,6 +163,14 @@ class _AButtonState extends State<AButton> {
 
   Color get _pulseColor {
     return widget.pulseColor ?? _theme.pulseColor ?? Colors.blue;
+  }
+
+  Color get _hoverColor {
+    if (widget.buttonType == AButtonType.link) {
+      return Colors.transparent;
+    } else {
+      return ATheme.of(context).neutralColor.shade400;
+    }
   }
 
   Widget get _child {
@@ -194,6 +231,7 @@ class _AButtonState extends State<AButton> {
     result = InkWell(
       splashFactory: _splashFactory,
       onTap: widget.onPressed,
+      hoverColor: _hoverColor,
       onHover: (state) {
         setState(() {
           _hover = state;
@@ -207,5 +245,26 @@ class _AButtonState extends State<AButton> {
     );
 
     return result;
+  }
+}
+
+class _IconContent extends StatelessWidget {
+  const _IconContent({required this.icon, this.content, required this.spacing});
+
+  final Widget icon;
+  final Widget? content;
+  final double? spacing;
+
+  @override
+  Widget build(BuildContext context) {
+    if (content == null) return icon;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        icon,
+        SizedBox(width: spacing ?? AButtonTheme.of(context).iconSpacing),
+        content!,
+      ],
+    );
   }
 }

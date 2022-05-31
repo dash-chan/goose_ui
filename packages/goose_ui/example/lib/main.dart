@@ -13,7 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ATheme(
       data: AThemeData(
-        primaryAntColor: AntColors.dustRed,
+        primaryAntColor: AntColors.geekBlue,
+        buttonTheme: const AButtonThemeData(
+          autoInsertSpaceInButton: true,
+          pulseColor: Colors.pink,
+        ),
       ),
       child: MaterialApp(
         title: 'Goose UI',
@@ -55,16 +59,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   rounded: rounded,
                   child: Text(type.name),
                 ),
-              for (var size in ASize.values)
-                AButton(
-                  onPressed: () {},
-                  buttonType: type,
-                  size: size,
-                  child: Text(type.name),
-                ),
-              AIconButton(
+              AButton.icon(
                 onPressed: () {},
                 icon: const Icon(Icons.search),
+                rounded: true,
+                buttonType: type,
+              ),
+              AButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.search),
+                content: const Text('search'),
                 rounded: true,
                 buttonType: type,
               ),
@@ -76,6 +80,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
+        Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: [
+            for (var type in AButtonType.values)
+              AButton(
+                onPressed: () {},
+                danger: true,
+                buttonType: type,
+                child: Text('danger ${type.name}'),
+              ),
+          ],
+        ),
       ]),
     );
   }
