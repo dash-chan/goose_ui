@@ -8,14 +8,17 @@ class AThemeData {
     Color? primaryColor,
     AntColor? primaryAntColor,
     AntNeutralColor? neutralColor,
+    Color? pulseColor,
     AButtonThemeData? buttonTheme,
   }) {
     primaryAntColor ??= AntColors.daybreakBlue;
     neutralColor ??= AntColors.neutral;
     primaryColor ??= primaryAntColor.primary;
+    pulseColor ??= primaryAntColor.primary;
     buttonTheme ??= AButtonThemeData(
       primaryColor: primaryColor,
       normalColor: neutralColor,
+      pulseColor: pulseColor,
     );
 
     return AThemeData.raw(
@@ -23,6 +26,7 @@ class AThemeData {
       primaryAntColor: primaryAntColor,
       buttonTheme: buttonTheme,
       neutralColor: neutralColor,
+      pulseColor: pulseColor,
     );
   }
 
@@ -30,12 +34,14 @@ class AThemeData {
     required this.primaryColor,
     required this.primaryAntColor,
     required this.neutralColor,
+    required this.pulseColor,
     required this.buttonTheme,
   });
 
   final Color primaryColor;
   final AntColor primaryAntColor;
   final AntNeutralColor neutralColor;
+  final Color pulseColor;
   final AButtonThemeData buttonTheme;
 
   @override
@@ -46,8 +52,8 @@ class AThemeData {
         other.primaryColor == primaryColor &&
         other.primaryAntColor == primaryAntColor &&
         other.neutralColor == neutralColor &&
-        other.buttonTheme == buttonTheme &&
-        other.primaryAntColor.hashCode == primaryAntColor.hashCode;
+        other.pulseColor == pulseColor &&
+        other.buttonTheme == buttonTheme;
   }
 
   @override
@@ -55,7 +61,7 @@ class AThemeData {
     return primaryColor.hashCode ^
         primaryAntColor.hashCode ^
         neutralColor.hashCode ^
-        buttonTheme.hashCode ^
-        primaryAntColor.hashCode.hashCode;
+        pulseColor.hashCode ^
+        buttonTheme.hashCode;
   }
 }

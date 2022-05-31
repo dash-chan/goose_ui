@@ -20,6 +20,7 @@ class AButton extends StatefulWidget {
     this.shape,
     this.backgroundColor,
     this.foregroundColor,
+    this.pulseColor,
     this.autoInsertSpaceInButton,
     this.padding,
     this.rounded = false,
@@ -32,6 +33,7 @@ class AButton extends StatefulWidget {
   final ShapeBorder? shape;
   final Color? backgroundColor;
   final Color? foregroundColor;
+  final Color? pulseColor;
   final bool? autoInsertSpaceInButton;
   final EdgeInsets? padding;
   final bool rounded;
@@ -89,8 +91,7 @@ class _AButtonState extends State<AButton> {
 
     switch (widget.buttonType) {
       case AButtonType.primary:
-        //TODO Button Theme primary
-        return Colors.blue;
+        return _theme.primaryColor ?? Colors.blue;
       case AButtonType.dashed:
       case AButtonType.link:
       case AButtonType.text:
@@ -109,7 +110,7 @@ class _AButtonState extends State<AButton> {
       case AButtonType.original:
         return Colors.black;
       case AButtonType.link:
-        return Colors.blue;
+        return _theme.primaryColor ?? Colors.blue;
     }
   }
 
@@ -130,6 +131,10 @@ class _AButtonState extends State<AButton> {
   }
 
   ASize get _buttonSize => widget.size ?? ASize.medium;
+
+  Color get _pulseColor {
+    return widget.pulseColor ?? _theme.pulseColor ?? Colors.blue;
+  }
 
   Widget get _child {
     if (!(widget.autoInsertSpaceInButton ?? _theme.autoInsertSpaceInButton)) {
@@ -194,7 +199,7 @@ class _AButtonState extends State<AButton> {
           _hover = state;
         });
       },
-      splashColor: Colors.blue,
+      splashColor: _pulseColor,
       customBorder: _shape,
       mouseCursor:
           _disabled ? SystemMouseCursors.forbidden : SystemMouseCursors.click,

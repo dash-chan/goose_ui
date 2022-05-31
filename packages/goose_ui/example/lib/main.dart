@@ -13,9 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ATheme(
       data: AThemeData(
-        buttonTheme: const AButtonThemeData(
-          autoInsertSpaceInButton: true,
-        ),
+        primaryAntColor: AntColors.dustRed,
       ),
       child: MaterialApp(
         title: 'Goose UI',
@@ -44,42 +42,41 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(12),
-        child: Wrap(
-          spacing: 12,
-          runSpacing: 12,
-          children: [
-            for (var rounded in [true, false])
+      body: ListView(children: [
+        for (var type in AButtonType.values)
+          Wrap(
+            spacing: 12,
+            runSpacing: 12,
+            children: [
+              for (var rounded in [true, false])
+                AButton(
+                  onPressed: () {},
+                  buttonType: type,
+                  rounded: rounded,
+                  child: Text(type.name),
+                ),
               for (var size in ASize.values)
-                for (var type in AButtonType.values)
-                  AButton(
-                    onPressed: () {},
-                    buttonType: type,
-                    size: size,
-                    rounded: rounded,
-                    child: Text(type.name),
-                  ),
-            AButton(
-              onPressed: () {},
-              buttonType: AButtonType.primary,
-              size: ASize.medium,
-              child: const Text('空格'),
-            ),
-            AIconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search),
-            ),
-            for (var type in AButtonType.values)
+                AButton(
+                  onPressed: () {},
+                  buttonType: type,
+                  size: size,
+                  child: Text(type.name),
+                ),
               AIconButton(
                 onPressed: () {},
                 icon: const Icon(Icons.search),
                 rounded: true,
                 buttonType: type,
               ),
-          ],
-        ),
-      ),
+              AButton(
+                onPressed: () {},
+                buttonType: type,
+                size: ASize.medium,
+                child: const Text('空格'),
+              ),
+            ],
+          ),
+      ]),
     );
   }
 }
