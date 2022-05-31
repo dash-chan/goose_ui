@@ -1,3 +1,4 @@
+import 'package:ant_color/ant_color.dart';
 import 'package:flutter/material.dart';
 
 import 'package:goose_ui/src/themes/theme.dart';
@@ -6,21 +7,21 @@ class AButtonThemeData {
   const AButtonThemeData({
     this.autoInsertSpaceInButton = true,
     this.primaryColor,
-    this.normalColor,
+    this.neutralColor,
     this.pulseColor,
     this.iconSpacing = 4,
   });
 
   final bool autoInsertSpaceInButton;
-  final Color? primaryColor;
-  final Color? normalColor;
+  final AntColor? primaryColor;
+  final AntNeutralColor? neutralColor;
   final Color? pulseColor;
   final double iconSpacing;
 
   AButtonThemeData copyWith({
     bool? autoInsertSpaceInButton,
-    Color? primaryColor,
-    Color? normalColor,
+    AntColor? primaryColor,
+    AntNeutralColor? neutralColor,
     Color? pulseColor,
     double? iconSpacing,
   }) {
@@ -28,7 +29,7 @@ class AButtonThemeData {
       autoInsertSpaceInButton:
           autoInsertSpaceInButton ?? this.autoInsertSpaceInButton,
       primaryColor: primaryColor ?? this.primaryColor,
-      normalColor: normalColor ?? this.normalColor,
+      neutralColor: neutralColor ?? this.neutralColor,
       pulseColor: pulseColor ?? this.pulseColor,
       iconSpacing: iconSpacing ?? this.iconSpacing,
     );
@@ -39,7 +40,7 @@ class AButtonThemeData {
     return copyWith(
       autoInsertSpaceInButton: other.autoInsertSpaceInButton,
       primaryColor: other.primaryColor,
-      normalColor: other.normalColor,
+      neutralColor: other.neutralColor,
       pulseColor: other.pulseColor,
       iconSpacing: other.iconSpacing,
     );
@@ -52,7 +53,7 @@ class AButtonThemeData {
     return other is AButtonThemeData &&
         other.autoInsertSpaceInButton == autoInsertSpaceInButton &&
         other.primaryColor == primaryColor &&
-        other.normalColor == normalColor &&
+        other.neutralColor == neutralColor &&
         other.pulseColor == pulseColor &&
         other.iconSpacing == iconSpacing;
   }
@@ -61,7 +62,7 @@ class AButtonThemeData {
   int get hashCode {
     return autoInsertSpaceInButton.hashCode ^
         primaryColor.hashCode ^
-        normalColor.hashCode ^
+        neutralColor.hashCode ^
         pulseColor.hashCode ^
         iconSpacing.hashCode;
   }

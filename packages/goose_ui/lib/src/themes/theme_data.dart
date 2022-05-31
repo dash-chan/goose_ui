@@ -9,7 +9,7 @@ class AThemeData {
     AntColor? primaryAntColor,
     AntNeutralColor? neutralColor,
     Color? pulseColor,
-    Color? errorColor,
+    AntColor? errorColor,
     AButtonThemeData? buttonTheme,
   }) {
     primaryAntColor ??= AntColors.daybreakBlue;
@@ -20,12 +20,12 @@ class AThemeData {
     buttonTheme ??= const AButtonThemeData();
 
     buttonTheme = AButtonThemeData(
-      primaryColor: primaryColor,
-      normalColor: neutralColor,
+      primaryColor: primaryAntColor,
+      neutralColor: neutralColor,
       pulseColor: pulseColor,
     ).merge(buttonTheme);
 
-    errorColor ??= AntColors.dustRed.shade500;
+    errorColor ??= AntColors.dustRed;
 
     return AThemeData.raw(
       primaryColor: primaryColor,
@@ -50,7 +50,7 @@ class AThemeData {
   final AntColor primaryAntColor;
   final AntNeutralColor neutralColor;
   final Color pulseColor;
-  final Color errorColor;
+  final AntColor errorColor;
   final AButtonThemeData buttonTheme;
 
   @override

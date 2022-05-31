@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goose_ui/goose_ui.dart';
 import 'package:goose_ui/src/themes/theme.dart';
 import 'package:goose_ui/src/widgets/button/button_shape.dart';
 
@@ -64,6 +65,7 @@ class AButton extends StatefulWidget {
 
 class _AButtonState extends State<AButton> {
   bool _hover = false;
+  bool _isTap = false;
 
   AButtonThemeData get _theme => AButtonTheme.of(context);
 
@@ -106,11 +108,11 @@ class _AButtonState extends State<AButton> {
     }
   }
 
-  Color get _primary {
+  AntColor get _primary {
     if (widget.danger) {
       return ATheme.of(context).errorColor;
     } else {
-      return _theme.primaryColor ?? Colors.blue;
+      return _theme.primaryColor ?? AntColors.daybreakBlue;
     }
   }
 
@@ -119,6 +121,8 @@ class _AButtonState extends State<AButton> {
 
     switch (widget.buttonType) {
       case AButtonType.primary:
+        if (_isTap) return _primary.shade700;
+        if (_hover) return _primary.shade400;
         return _primary;
       case AButtonType.dashed:
       case AButtonType.link:
@@ -133,10 +137,14 @@ class _AButtonState extends State<AButton> {
     switch (widget.buttonType) {
       case AButtonType.primary:
         return Colors.white;
-      case AButtonType.dashed:
       case AButtonType.text:
+        if (widget.danger) return ATheme.of(context).errorColor;
+        return Colors.black;
+      case AButtonType.dashed:
       case AButtonType.original:
         if (widget.danger) return ATheme.of(context).errorColor;
+        if (_isTap) return _primary.shade700;
+        if (_hover) return _primary;
         return Colors.black;
       case AButtonType.link:
         return _primary;
@@ -145,9 +153,13 @@ class _AButtonState extends State<AButton> {
 
   BorderSide get _side {
     Color color = _primary;
-    if (!_hover) {
-      color = _theme.normalColor ?? Colors.grey;
+    if (_isTap) {
+      color = _primary.shade700;
     }
+    if (!_hover) {
+      color = _theme.neutralColor ?? Colors.grey;
+    }
+
     switch (widget.buttonType) {
       case AButtonType.primary:
       case AButtonType.link:
@@ -162,14 +174,23 @@ class _AButtonState extends State<AButton> {
   ASize get _buttonSize => widget.size ?? ASize.medium;
 
   Color get _pulseColor {
+    if (widget.danger) return ATheme.of(context).errorColor;
     return widget.pulseColor ?? _theme.pulseColor ?? Colors.blue;
   }
 
   Color get _hoverColor {
-    if (widget.buttonType == AButtonType.link) {
-      return Colors.transparent;
+    if (widget.buttonType == AButtonType.text) {
+      return ATheme.of(context).neutralColor.shade300;
     } else {
+      return Colors.transparent;
+    }
+  }
+
+  Color get _highlightColor {
+    if (widget.buttonType == AButtonType.text) {
       return ATheme.of(context).neutralColor.shade400;
+    } else {
+      return Colors.transparent;
     }
   }
 
@@ -232,9 +253,15 @@ class _AButtonState extends State<AButton> {
       splashFactory: _splashFactory,
       onTap: widget.onPressed,
       hoverColor: _hoverColor,
+      highlightColor: _highlightColor,
       onHover: (state) {
         setState(() {
           _hover = state;
+        });
+      },
+      onHighlightChanged: (state) {
+        setState(() {
+          _isTap = state;
         });
       },
       splashColor: _pulseColor,
