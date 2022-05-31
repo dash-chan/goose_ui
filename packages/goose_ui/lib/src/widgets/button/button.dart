@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goose_ui/src/widgets/button/button_shape.dart';
 
 import '../../enums/enums.dart';
 import '../ink_pulse/ink_pulse.dart';
@@ -40,6 +41,8 @@ class AButton extends StatefulWidget {
 }
 
 class _AButtonState extends State<AButton> {
+  bool _hover = false;
+
   AButtonThemeData get _theme => AButtonTheme.of(context);
 
   bool get _disabled => widget.onPressed == null;
@@ -56,18 +59,26 @@ class _AButtonState extends State<AButton> {
     if (widget.shape != null) return widget.shape!;
     switch (widget.buttonType) {
       case AButtonType.dashed:
+        if (widget.rounded) {
+          return StadiumDashBorder(side: _side, interval: const [2, 2]);
+        } else {
+          return RoundedDashBorder(
+            side: _side,
+            borderRadius: BorderRadius.circular(4),
+            interval: const [2, 2],
+          );
+        }
       case AButtonType.link:
-      case AButtonType.text:
         return null;
+
+      case AButtonType.text:
       default:
         if (widget.rounded) {
-          return StadiumBorder(
-            side: _side ?? BorderSide.none,
-          );
+          return StadiumBorder(side: _side);
         } else {
           return RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(4),
-            side: _side ?? BorderSide.none,
+            side: _side,
           );
         }
     }
@@ -102,15 +113,15 @@ class _AButtonState extends State<AButton> {
     }
   }
 
-  BorderSide? get _side {
+  BorderSide get _side {
     switch (widget.buttonType) {
       case AButtonType.primary:
-      case AButtonType.dashed:
       case AButtonType.link:
       case AButtonType.text:
-        return null;
+        return BorderSide.none;
+      case AButtonType.dashed:
       case AButtonType.original:
-        return const BorderSide(color: Colors.blue);
+        return const BorderSide(color: Colors.blue, width: 1);
     }
   }
 
@@ -174,6 +185,11 @@ class _AButtonState extends State<AButton> {
     result = InkWell(
       splashFactory: _splashFactory,
       onTap: widget.onPressed,
+      onHover: (state) {
+        setState(() {
+          _hover = state;
+        });
+      },
       splashColor: Colors.blue,
       customBorder: _shape,
       mouseCursor:

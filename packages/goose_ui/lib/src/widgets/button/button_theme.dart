@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
+
 import 'package:goose_ui/src/themes/theme.dart';
 
 class AButtonThemeData {
   const AButtonThemeData({
     this.autoInsertSpaceInButton = true,
+    this.primaryColor,
   });
 
   final bool autoInsertSpaceInButton;
+  final Color? primaryColor;
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
     return other is AButtonThemeData &&
-        autoInsertSpaceInButton == other.autoInsertSpaceInButton;
+        other.autoInsertSpaceInButton == autoInsertSpaceInButton &&
+        other.primaryColor == primaryColor;
   }
 
   @override
-  int get hashCode => autoInsertSpaceInButton.hashCode;
+  int get hashCode => autoInsertSpaceInButton.hashCode ^ primaryColor.hashCode;
 }
 
 class AButtonTheme extends InheritedTheme {

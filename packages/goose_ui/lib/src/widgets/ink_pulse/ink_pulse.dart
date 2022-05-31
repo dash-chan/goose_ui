@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 const Duration _kFadeOutDuration = Duration(milliseconds: 300);
 
 /// a ink pulse feature.
@@ -53,6 +52,11 @@ class InkPulse extends InteractiveInkFeature {
     if (status == AnimationStatus.completed) {
       dispose();
     }
+  }
+
+  @override
+  void cancel() {
+    dispose();
   }
 
   @override
