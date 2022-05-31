@@ -114,6 +114,10 @@ class _AButtonState extends State<AButton> {
   }
 
   BorderSide get _side {
+    Color color = _theme.primaryColor ?? Colors.blue;
+    if (!_hover) {
+      color = _theme.normalColor ?? Colors.grey;
+    }
     switch (widget.buttonType) {
       case AButtonType.primary:
       case AButtonType.link:
@@ -121,7 +125,7 @@ class _AButtonState extends State<AButton> {
         return BorderSide.none;
       case AButtonType.dashed:
       case AButtonType.original:
-        return const BorderSide(color: Colors.blue, width: 1);
+        return BorderSide(color: color, width: 1);
     }
   }
 

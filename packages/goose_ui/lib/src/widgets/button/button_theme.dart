@@ -6,10 +6,12 @@ class AButtonThemeData {
   const AButtonThemeData({
     this.autoInsertSpaceInButton = true,
     this.primaryColor,
+    this.normalColor,
   });
 
   final bool autoInsertSpaceInButton;
   final Color? primaryColor;
+  final Color? normalColor;
 
   @override
   bool operator ==(Object other) {
@@ -17,11 +19,15 @@ class AButtonThemeData {
 
     return other is AButtonThemeData &&
         other.autoInsertSpaceInButton == autoInsertSpaceInButton &&
-        other.primaryColor == primaryColor;
+        other.primaryColor == primaryColor &&
+        other.normalColor == normalColor;
   }
 
   @override
-  int get hashCode => autoInsertSpaceInButton.hashCode ^ primaryColor.hashCode;
+  int get hashCode =>
+      autoInsertSpaceInButton.hashCode ^
+      primaryColor.hashCode ^
+      normalColor.hashCode;
 }
 
 class AButtonTheme extends InheritedTheme {
