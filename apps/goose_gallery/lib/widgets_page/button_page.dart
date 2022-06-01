@@ -91,9 +91,68 @@ class ButtonPage extends StatelessWidget {
               // END
             ],
           ),
-          const SizedBox(height: 12),
+          const ButtonSizeBox(),
+          PlayBox(
+            title: '危险按钮',
+            codes: CodeSegments.buttonDanger(context),
+            desc: '',
+            children: [
+              // BEGIN buttonDanger#1
+              for (var type in AButtonType.values)
+                AButton(
+                  onPressed: () {},
+                  buttonType: type,
+                  danger: true,
+                  child: Text(type.name),
+                ),
+              // END
+            ],
+          ),
         ],
       ),
+    );
+  }
+}
+
+class ButtonSizeBox extends StatefulWidget {
+  const ButtonSizeBox({Key? key}) : super(key: key);
+
+  @override
+  State<ButtonSizeBox> createState() => _ButtonSizeBoxState();
+}
+
+class _ButtonSizeBoxState extends State<ButtonSizeBox> {
+  // BEGIN buttonSize#1
+  ASize _size = ASize.medium;
+  // END
+  @override
+  Widget build(BuildContext context) {
+    return PlayBox(
+      title: '按钮尺寸',
+      codes: CodeSegments.buttonSize(context),
+      desc:
+          '按钮有大、中、小三种尺寸。通过设置 size 为 large small 分别把按钮设为大、小尺寸。若不设置 size，则尺寸为中。',
+      children: [
+        // BEGIN buttonSize#2
+        for (var size in ASize.values)
+          AButton(
+            onPressed: () {
+              setState(() {
+                _size = size;
+              });
+            },
+            child: Text(size.name),
+          ),
+        const SizedBox(width: double.infinity),
+        for (var type in AButtonType.values)
+          AButton(
+            onPressed: () {},
+            buttonType: type,
+            size: _size,
+            child: Text(type.name),
+          ),
+        // END
+      ],
     );
   }
 }
