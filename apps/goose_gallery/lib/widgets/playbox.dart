@@ -28,6 +28,7 @@ class PlayBox extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: Colors.grey),
+        borderRadius: BorderRadius.circular(4),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

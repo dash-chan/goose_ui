@@ -1,5 +1,5 @@
+import 'package:ant_color/ant_color.dart';
 import 'package:flutter/material.dart';
-import 'package:goose_ui/goose_ui.dart';
 import 'package:goose_ui/src/themes/theme.dart';
 import 'package:goose_ui/src/widgets/button/button_shape.dart';
 
@@ -33,7 +33,7 @@ class AButton extends StatefulWidget {
     required Widget icon,
     double? spacing,
     Widget? content,
-    this.size,
+    ASize buttonSize = ASize.medium,
     required this.onPressed,
     this.buttonType = AButtonType.original,
     this.shape,
@@ -41,10 +41,18 @@ class AButton extends StatefulWidget {
     this.foregroundColor,
     this.pulseColor,
     this.autoInsertSpaceInButton,
-    this.padding,
+    EdgeInsets? iconPadding,
     this.rounded = false,
     this.danger = false,
-  }) : child = _IconContent(icon: icon, content: content, spacing: spacing);
+  })  : padding = EdgeInsets.zero,
+        size = buttonSize,
+        child = _IconContent(
+          icon: icon,
+          content: content,
+          spacing: spacing,
+          padding: iconPadding,
+          size: buttonSize,
+        );
 
   final ASize? size;
   final VoidCallback? onPressed;
@@ -122,7 +130,7 @@ class _AButtonState extends State<AButton> {
     switch (widget.buttonType) {
       case AButtonType.primary:
         if (_isTap) return _primary.shade700;
-        if (_hover) return _primary.shade400;
+        if (_hover) return _primary.shade500;
         return _primary;
       case AButtonType.dashed:
       case AButtonType.link:
@@ -216,6 +224,15 @@ class _AButtonState extends State<AButton> {
     // autoInsertSpaceInButton
     Widget result = _child;
 
+    // add icon style
+    result = IconTheme(
+      data: IconThemeData(
+        color: _foregroundColor,
+        size: _buttonSize.buttonSize,
+      ),
+      child: result,
+    );
+
     // center widget
     result = Center(widthFactor: 1, heightFactor: 1, child: result);
 
@@ -276,22 +293,34 @@ class _AButtonState extends State<AButton> {
 }
 
 class _IconContent extends StatelessWidget {
-  const _IconContent({required this.icon, this.content, required this.spacing});
+  const _IconContent({
+    required this.icon,
+    this.content,
+    required this.spacing,
+    this.padding,
+    required this.size,
+  });
 
   final Widget icon;
   final Widget? content;
   final double? spacing;
+  final EdgeInsets? padding;
+  final ASize size;
 
   @override
   Widget build(BuildContext context) {
     if (content == null) return icon;
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        icon,
-        SizedBox(width: spacing ?? AButtonTheme.of(context).iconSpacing),
-        content!,
-      ],
+    return Padding(
+      padding: padding ??
+          EdgeInsets.symmetric(horizontal: size.buttonHorizontalPadding),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          icon,
+          SizedBox(width: spacing ?? AButtonTheme.of(context).iconSpacing),
+          content!,
+        ],
+      ),
     );
   }
 }

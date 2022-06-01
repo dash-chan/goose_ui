@@ -8,7 +8,8 @@
             "name": "gallery",
             "cwd": "gallery",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "program": "apps/goose_gallery/lib/main.dart",
         },
         {
             "name": "gallery (profile mode)",
