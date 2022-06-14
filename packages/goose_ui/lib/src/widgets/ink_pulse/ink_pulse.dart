@@ -24,13 +24,13 @@ class InkPulse extends InteractiveInkFeature {
         duration: _kFadeOutDuration, vsync: controller.vsync)
       ..addListener(controller.markNeedsPaint)
       ..addStatusListener(_handleAnimationStatusChanged);
-    _fadeOut = _fadeOutController
+    _fadeOut = _fadeOutController!
         .drive(Tween<double>(begin: 1, end: 0).chain(_fadeOutIntervalTween));
-    _opacity = _fadeOutController
+    _opacity = _fadeOutController!
         .drive(Tween<double>(begin: 1, end: 0).chain(_opacityIntervalTween));
     controller.addInkFeature(this);
   }
-  late AnimationController _fadeOutController;
+  AnimationController? _fadeOutController;
   late Animation<double> _fadeOut;
   late Animation<double> _opacity;
   late BorderRadius? _borderRadius;
@@ -61,18 +61,19 @@ class InkPulse extends InteractiveInkFeature {
 
   @override
   void confirm() {
-    _fadeOutController.animateTo(1, duration: _kFadeOutDuration);
+    _fadeOutController?.animateTo(1, duration: _kFadeOutDuration);
   }
 
   @override
   void dispose() {
-    _fadeOutController.dispose();
+    _fadeOutController?.dispose();
+    _fadeOutController = null;
     super.dispose();
   }
 
   @override
   void paintFeature(Canvas canvas, Matrix4 transform) {
-    if (_fadeOutController.isAnimating) {
+    if (_fadeOutController?.isAnimating ?? false) {
       _paintFeature(
         canvas,
         transform,
