@@ -7,10 +7,12 @@ class TooltipPainter extends CustomPainter {
   const TooltipPainter({
     required this.alignment,
     required this.color,
+    required this.shadowColor,
   });
 
   final AAlignment alignment;
   final Color color;
+  final Color shadowColor;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -20,7 +22,7 @@ class TooltipPainter extends CustomPainter {
       ..strokeWidth = 1;
 
     Paint shadowPaint = Paint()
-      ..color = color.withOpacity(0.1)
+      ..color = shadowColor
       ..style = PaintingStyle.fill
       ..maskFilter = const MaskFilter.blur(BlurStyle.outer, 8)
       ..strokeWidth = 1;

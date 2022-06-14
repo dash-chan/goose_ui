@@ -4,15 +4,20 @@ import '../../enums/alignment.dart';
 import 'tooltip_painter.dart';
 
 class TooltipBox extends StatelessWidget {
-  const TooltipBox(
-      {super.key,
-      this.spacing = 12,
-      required this.alignment,
-      required this.color});
+  const TooltipBox({
+    super.key,
+    this.spacing = 12,
+    required this.alignment,
+    required this.color,
+    required this.shadowColor,
+    required this.child,
+  });
 
   final double spacing;
   final AAlignment alignment;
   final Color color;
+  final Color shadowColor;
+  final Widget child;
 
   EdgeInsets get _padding {
     if (alignment.isTop) {
@@ -34,10 +39,14 @@ class TooltipBox extends StatelessWidget {
       padding: _padding,
       // TODO refactor use [SingleChildRenderObjectWidget] & [RenderProxyBox]
       child: CustomPaint(
-        painter: TooltipPainter(alignment: alignment, color: color),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-          child: Text('tooltip'),
+        painter: TooltipPainter(
+          alignment: alignment,
+          color: color,
+          shadowColor: shadowColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          child: child,
         ),
       ),
     );

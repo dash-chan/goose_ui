@@ -12,13 +12,15 @@ class TooltipPage extends StatelessWidget {
         children: [
           for (var alignment in AAlignment.values)
             Padding(
-              padding: EdgeInsets.all(24),
+              padding: const EdgeInsets.all(24),
               child: Center(
-                child:
-                    AToolTip(alignment: alignment, child: Text(alignment.name)),
+                child: AToolTip(
+                  alignment: alignment,
+                  labelText: alignment.name,
+                  child: Text(alignment.name),
+                ),
               ),
             ),
-          AToolTip(alignment: AAlignment.leftBottom, child: Text('current')),
         ],
       ),
     );
