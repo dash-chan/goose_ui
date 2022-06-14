@@ -1,22 +1,16 @@
 ![logo](docs/image/logo.png)
 
 # goose_ui
-an elegant uikit for flutter desktop. 
+an ant design uikit implements in `flutter`. 
 
-> caution: package is in <span style="color:red">development.</span>,not for product usage.
+> caution: package is in <span style="color:red">development</span>,not for product usage.
 ## Getting Started
 
 ### run gallery 
 
 ```shell
-cd gallery
+cd apps/goose_gallery
 flutter run
-```
-
-* generate gallery code
-> using codeviewer_cli
-```dart
-dart run tool/codeviewer_cli/main.dart
 ```
 
 ### development
@@ -27,36 +21,8 @@ melos bs
 
 ## Current Widgets
 
-* [x] AppBar
-* [x] AppMenu
-* [x] AppTitleBar
 * [x] Button
 * [x] Calendar
-* [x] Card
-* [x] Checkbox
-* [x] Drawer
-* [x] Expansion
-* [x] Input
-* [x] Loading
-* [x] Menu
-* [x] Pagination
-* [x] Radio
-* [x] Rating
-* [x] Scaffold
-* [x] Select
-* [x] Switch
-* [x] SystemBar
-
-## RoadMap
-
-### goose_ui road map
-
-* [0.1](https://github.com/goose-kit/goose_ui/projects/1) widgets develop
-* [0.2](https://github.com/goose-kit/goose_ui/projects/2) theme  
-
-### gallery road map
-
-* [ ] use Navigator 2
 
 ## Thanks 
 
