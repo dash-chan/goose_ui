@@ -72,11 +72,10 @@ class AButtonTheme extends InheritedTheme {
   const AButtonTheme({super.key, required super.child, this.data});
 
   const AButtonTheme.fromButtonThemeData({
-    Key? key,
+    super.key,
     required this.data,
-    required Widget child,
-  })  : assert(data != null),
-        super(key: key, child: child);
+    required super.child,
+  }) : assert(data != null);
 
   final AButtonThemeData? data;
 

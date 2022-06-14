@@ -2,6 +2,7 @@ import 'package:ant_color/ant_color.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/button/button_theme.dart';
+import '../widgets/tooltip/tooltip_theme.dart';
 
 class AThemeData {
   factory AThemeData({
@@ -11,6 +12,7 @@ class AThemeData {
     Color? pulseColor,
     AntColor? errorColor,
     AButtonThemeData? buttonTheme,
+    ATooltipThemeData? tooltipTheme,
   }) {
     primaryAntColor ??= AntColors.daybreakBlue;
     neutralColor ??= AntColors.neutral;
@@ -27,6 +29,8 @@ class AThemeData {
 
     errorColor ??= AntColors.dustRed;
 
+    tooltipTheme ??= ATooltipThemeData();
+
     return AThemeData.raw(
       primaryColor: primaryColor,
       primaryAntColor: primaryAntColor,
@@ -34,6 +38,7 @@ class AThemeData {
       neutralColor: neutralColor,
       pulseColor: pulseColor,
       errorColor: errorColor,
+      tooltipTheme: tooltipTheme,
     );
   }
 
@@ -44,6 +49,7 @@ class AThemeData {
     required this.pulseColor,
     required this.errorColor,
     required this.buttonTheme,
+    required this.tooltipTheme,
   });
 
   final Color primaryColor;
@@ -52,6 +58,7 @@ class AThemeData {
   final Color pulseColor;
   final AntColor errorColor;
   final AButtonThemeData buttonTheme;
+  final ATooltipThemeData tooltipTheme;
 
   @override
   bool operator ==(Object other) {
@@ -63,7 +70,8 @@ class AThemeData {
         other.neutralColor == neutralColor &&
         other.pulseColor == pulseColor &&
         other.errorColor == errorColor &&
-        other.buttonTheme == buttonTheme;
+        other.buttonTheme == buttonTheme &&
+        other.tooltipTheme == tooltipTheme;
   }
 
   @override
@@ -73,6 +81,7 @@ class AThemeData {
         neutralColor.hashCode ^
         pulseColor.hashCode ^
         errorColor.hashCode ^
-        buttonTheme.hashCode;
+        buttonTheme.hashCode ^
+        tooltipTheme.hashCode;
   }
 }

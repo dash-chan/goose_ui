@@ -13,6 +13,7 @@ dependencies:
   ant_color: ^0.0.3
   antd_icons: ^0.0.3
   path_drawing: ^1.0.0
+  flutter_portal: ^1.1.0
 
 dev_dependencies:
   flutter_test:
