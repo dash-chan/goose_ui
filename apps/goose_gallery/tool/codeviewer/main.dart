@@ -18,6 +18,6 @@ Future<void> main(List<String> arguments) async {
   final argResults = parser.parse(arguments);
 
   final codeSegments =
-      await getCodeSegments(sourceDirectoryPath: 'lib/widgets_page');
+      await getCodeSegments(sourceDirectoryPath: 'lib/widget_views');
   File(argResults['target'] as String).writeAsStringSync(codeSegments);
 }

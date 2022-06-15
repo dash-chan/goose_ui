@@ -37,6 +37,7 @@ dependencies:
   goose_ui:
     path: ../../packages/goose_ui/
   waterfall_flow: ^3.0.2
+  animations: ^2.0.3
 
 dev_dependencies:
   flutter_test:
