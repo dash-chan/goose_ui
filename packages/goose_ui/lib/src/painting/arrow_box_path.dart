@@ -1,163 +1,191 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-import '../enums/alignment.dart';
-
-const _arrowWidth = 6;
-const _arrowHeight = 3;
-
-Path arrowBoxPath(
-    {required Rect rect, required AAlignment alignment, double spacing = 6}) {
-  final path = Path();
-
-  final left = rect.left;
-  final top = rect.top;
-  final bottom = rect.bottom;
-  final right = rect.right;
-
-  List<Offset> offsets = [];
-
-  switch (alignment) {
-    case AAlignment.topLeft:
-      offsets = [
-        Offset(left, top),
-        Offset(right, top),
-        Offset(right, bottom),
-        Offset(_arrowWidth + spacing, bottom),
-        Offset(_arrowWidth / 2 + spacing, bottom + _arrowHeight),
-        Offset(spacing, bottom),
-        Offset(left, bottom),
-      ];
-      break;
-    case AAlignment.topCenter:
-      offsets = [
-        Offset(left, top),
-        Offset(right, top),
-        Offset(right, bottom),
-        Offset((right + _arrowWidth) / 2, bottom),
-        Offset(right / 2, bottom + _arrowHeight),
-        Offset((right - _arrowWidth) / 2, bottom),
-        Offset(left, bottom),
-      ];
-      break;
-    case AAlignment.topRight:
-      offsets = [
-        Offset(left, top),
-        Offset(right, top),
-        Offset(right, bottom),
-        Offset(right - spacing, bottom),
-        Offset(_arrowWidth / 2 + spacing, bottom + _arrowHeight),
-        Offset(right - spacing - _arrowWidth, bottom),
-        Offset(left, bottom),
-      ];
-      break;
-    case AAlignment.leftTop:
-      offsets = [
-        Offset(left, top),
-        Offset(right, top),
-        Offset(right, top + spacing),
-        Offset(right + _arrowHeight, top + spacing + _arrowWidth / 2),
-        Offset(right, top + spacing + _arrowWidth),
-        Offset(right, bottom),
-        Offset(left, bottom),
-      ];
-      break;
-    case AAlignment.leftCenter:
-      offsets = [
-        Offset(left, top),
-        Offset(right, top),
-        Offset(right, bottom / 2 - _arrowWidth / 2),
-        Offset(right + _arrowHeight, bottom / 2),
-        Offset(right, bottom / 2 + _arrowWidth / 2),
-        Offset(right, bottom),
-        Offset(left, bottom),
-      ];
-      break;
-    case AAlignment.leftBottom:
-      offsets = [
-        Offset(left, top),
-        Offset(right, top),
-        Offset(right, bottom - spacing - _arrowWidth),
-        Offset(right + _arrowHeight, bottom - spacing - _arrowWidth / 2),
-        Offset(right, bottom - spacing),
-        Offset(right, bottom),
-        Offset(left, bottom),
-      ];
-      break;
-    case AAlignment.rightTop:
-      offsets = [
-        Offset(left, top),
-        Offset(right, top),
-        Offset(right, bottom),
-        Offset(left, bottom),
-        Offset(left, top + spacing),
-        Offset(left - _arrowHeight, top + spacing + _arrowWidth / 2),
-        Offset(left, top + spacing + _arrowWidth),
-      ];
-      break;
-    case AAlignment.rightCenter:
-      offsets = [
-        Offset(left, top),
-        Offset(right, top),
-        Offset(right, bottom),
-        Offset(left, bottom),
-        Offset(left, bottom / 2 - _arrowWidth / 2),
-        Offset(left - _arrowHeight, bottom / 2),
-        Offset(left, bottom / 2 + _arrowWidth / 2),
-      ];
-      break;
-    case AAlignment.rightBottom:
-      offsets = [
-        Offset(left, top),
-        Offset(right, top),
-        Offset(right, bottom),
-        Offset(left, bottom),
-        Offset(left, bottom - spacing - _arrowWidth),
-        Offset(left - _arrowHeight, bottom - spacing - _arrowWidth / 2),
-        Offset(left, bottom - spacing),
-      ];
-      break;
-    case AAlignment.bottomLeft:
-      offsets = [
-        Offset(left, top),
-        Offset(_arrowWidth + spacing, top),
-        Offset(_arrowWidth / 2 + spacing, top - _arrowHeight),
-        Offset(spacing, top),
-        Offset(right, top),
-        Offset(right, bottom),
-        Offset(left, bottom),
-      ];
-      break;
-    case AAlignment.bottomCenter:
-      offsets = [
-        Offset(left, top),
-        Offset((right + _arrowWidth) / 2, top),
-        Offset(right / 2, top - _arrowHeight),
-        Offset((right - _arrowWidth) / 2, top),
-        Offset(right, top),
-        Offset(right, bottom),
-        Offset(left, bottom),
-      ];
-      break;
-    case AAlignment.bottomRight:
-      offsets = [
-        Offset(left, top),
-        Offset(right - spacing, top),
-        Offset(_arrowWidth / 2 + spacing, top - _arrowHeight),
-        Offset(right - spacing - _arrowWidth, top),
-        Offset(right, top),
-        Offset(right, bottom),
-        Offset(left, bottom),
-      ];
-      break;
-  }
-
-  if (offsets.isNotEmpty) {
-    path.moveTo(offsets.first.dx, offsets.first.dy);
-    for (var element in offsets) {
-      path.lineTo(element.dx, element.dy);
+class ArrowBoxPath extends Path {
+  ArrowBoxPath({
+    required this.rect,
+    required this.borderRadius,
+    required this.control,
+  }) {
+    if (control == null && borderRadius == BorderRadius.zero) {
+      addRect(rect);
+      return;
     }
-    path.close();
+    if (control == null) {
+      addRRect(borderRadius.toRRect(rect));
+      return;
+    }
+
+    paintNormal();
   }
 
-  return path;
+  final Rect rect;
+  final BorderRadius borderRadius;
+  final ArrowControlPoints? control;
+
+  AxisDirection _direction(Offset point) {
+    final dx = point.dx;
+    final dy = point.dy;
+
+    if (dx <= rect.left) return AxisDirection.left;
+    if (dx >= rect.right) return AxisDirection.right;
+    if (dy <= rect.top) return AxisDirection.up;
+    if (dy >= rect.bottom) return AxisDirection.down;
+
+    return AxisDirection.down;
+  }
+
+  paintNormal() {
+    if (control == null) return;
+    final needleDirection = _direction(control!.needle);
+    final startDirection = _direction(control!.start);
+    final endDirection = _direction(control!.end);
+    // check border radius
+    // moveTo(rect.left, rect.top);
+
+    // top-left
+    arcTo(
+      Rect.fromLTWH(
+        rect.left,
+        rect.top,
+        borderRadius.topLeft.x,
+        borderRadius.topLeft.y,
+      ),
+      -pi,
+      pi / 2,
+      false,
+    );
+    if (startDirection == AxisDirection.up) {
+      lineTo(control!.start.dx, control!.start.dy);
+      lineTo(control!.needle.dx, control!.needle.dy);
+    }
+    if (endDirection == AxisDirection.up) {
+      lineTo(control!.end.dx, control!.end.dy);
+    }
+
+    arcTo(
+      Rect.fromLTWH(
+        rect.right - borderRadius.topRight.x,
+        rect.top,
+        borderRadius.topLeft.x,
+        borderRadius.topLeft.y,
+      ),
+      -pi / 2,
+      pi / 2,
+      false,
+    );
+
+    if (startDirection == AxisDirection.right) {
+      lineTo(control!.start.dx, control!.start.dy);
+      lineTo(control!.needle.dx, control!.needle.dy);
+    }
+    if (endDirection == AxisDirection.right) {
+      lineTo(control!.end.dx, control!.end.dy);
+    }
+
+    arcTo(
+      Rect.fromLTWH(
+        rect.right - borderRadius.bottomRight.x,
+        rect.bottom - borderRadius.bottomRight.y,
+        borderRadius.bottomRight.x,
+        borderRadius.bottomRight.y,
+      ),
+      0,
+      pi / 2,
+      false,
+    );
+
+    if (startDirection == AxisDirection.down) {
+      lineTo(control!.start.dx, control!.start.dy);
+      lineTo(control!.needle.dx, control!.needle.dy);
+    }
+    if (endDirection == AxisDirection.down) {
+      lineTo(control!.end.dx, control!.end.dy);
+    }
+
+    arcTo(
+      Rect.fromLTWH(
+        rect.left,
+        rect.bottom - borderRadius.bottomLeft.y,
+        borderRadius.bottomLeft.x,
+        borderRadius.bottomLeft.y,
+      ),
+      pi / 2,
+      pi / 2,
+      false,
+    );
+
+    if (startDirection == AxisDirection.left) {
+      lineTo(control!.start.dx, control!.start.dy);
+      lineTo(control!.needle.dx, control!.needle.dy);
+    }
+    if (endDirection == AxisDirection.left) {
+      lineTo(control!.end.dx, control!.end.dy);
+    }
+
+    close();
+  }
+}
+
+class ArrowControlPoints {
+  const ArrowControlPoints({
+    required this.start,
+    required this.end,
+    required this.needle,
+  });
+
+  factory ArrowControlPoints.fromBaseline(
+    Rect rect,
+    AxisDirection axis,
+    // from zero to one
+    double base,
+    double height,
+    double width,
+  ) {
+    late Offset baseOffset;
+    late Offset needleOffset;
+    late Offset startOffset;
+    late Offset endOffset;
+    double rectWidth = rect.width;
+    double rectHeight = rect.height;
+    double halfWidth = width / 2;
+
+    switch (axis) {
+      case AxisDirection.up:
+        baseOffset = Offset(rect.left + rectWidth * base, rect.top);
+        needleOffset = baseOffset.translate(0, -height);
+        startOffset = baseOffset.translate(-halfWidth, 0);
+        endOffset = baseOffset.translate(halfWidth, 0);
+        break;
+      case AxisDirection.down:
+        baseOffset = Offset(rect.left + rectWidth * base, rect.bottom);
+        needleOffset = baseOffset.translate(0, height);
+        endOffset = baseOffset.translate(-halfWidth, 0);
+        startOffset = baseOffset.translate(halfWidth, 0);
+        break;
+      case AxisDirection.right:
+        baseOffset = Offset(rect.right, rect.top + rectHeight * base);
+        needleOffset = baseOffset.translate(height, 0);
+        startOffset = baseOffset.translate(0, -halfWidth);
+        endOffset = baseOffset.translate(0, halfWidth);
+        break;
+      case AxisDirection.left:
+        baseOffset = Offset(rect.left, rect.top + rectHeight * base);
+        needleOffset = baseOffset.translate(-height, 0);
+        endOffset = baseOffset.translate(0, -halfWidth);
+        startOffset = baseOffset.translate(0, halfWidth);
+        break;
+    }
+
+    return ArrowControlPoints(
+      start: startOffset,
+      end: endOffset,
+      needle: needleOffset,
+    );
+  }
+
+  final Offset start;
+  final Offset end;
+  final Offset needle;
 }

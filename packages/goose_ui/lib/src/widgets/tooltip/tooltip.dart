@@ -146,11 +146,6 @@ class _AToolTipState extends State<AToolTip> {
   }
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void dispose() {
     removeTimer();
     super.dispose();

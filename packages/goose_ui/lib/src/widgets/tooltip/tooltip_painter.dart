@@ -14,6 +14,34 @@ class TooltipPainter extends CustomPainter {
   final Color color;
   final Color shadowColor;
 
+  double get _base {
+    switch (alignment) {
+      case AAlignment.topLeft:
+      case AAlignment.bottomLeft:
+      case AAlignment.leftTop:
+      case AAlignment.rightTop:
+        return 0.2;
+      case AAlignment.topRight:
+      case AAlignment.leftBottom:
+      case AAlignment.rightBottom:
+      case AAlignment.bottomRight:
+        return 0.8;
+      case AAlignment.topCenter:
+      case AAlignment.bottomCenter:
+      case AAlignment.rightCenter:
+      case AAlignment.leftCenter:
+        return 0.5;
+    }
+  }
+
+  AxisDirection get _direction {
+    if (alignment.isTop) return AxisDirection.down;
+    if (alignment.isBottom) return AxisDirection.up;
+    if (alignment.isLeft) return AxisDirection.right;
+    if (alignment.isRight) return AxisDirection.left;
+    return AxisDirection.down;
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
@@ -32,20 +60,23 @@ class TooltipPainter extends CustomPainter {
     final bottom = size.height;
     final right = size.width;
 
-    canvas.drawPath(
-      arrowBoxPath(
-        rect: Rect.fromLTRB(left, top, right, bottom),
-        alignment: alignment,
-      ),
-      shadowPaint,
+    final rect = Rect.fromLTRB(left, top, right, bottom);
+    final borderRadius = BorderRadius.circular(4);
+    final control = ArrowControlPoints.fromBaseline(
+      Rect.fromLTRB(left, top, right, bottom),
+      _direction,
+      _base,
+      4,
+      6,
     );
-    canvas.drawPath(
-      arrowBoxPath(
-        rect: Rect.fromLTRB(left, top, right, bottom),
-        alignment: alignment,
-      ),
-      paint,
+    final path = ArrowBoxPath(
+      rect: rect,
+      borderRadius: borderRadius,
+      control: control,
     );
+
+    canvas.drawPath(path, shadowPaint);
+    canvas.drawPath(path, paint);
   }
 
   @override
