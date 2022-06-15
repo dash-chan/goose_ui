@@ -13,12 +13,14 @@ class AToolTip extends StatefulWidget {
     this.alignment = AAlignment.topCenter,
     this.color,
     this.shadowColor,
-    required this.child,
     this.labelColor,
     this.labelText,
     this.label,
+    required this.child,
   }) : assert(
-            label != null || labelText != null, 'must set label or label text');
+          label != null || labelText != null,
+          'must set label or label text',
+        );
 
   final AAlignment alignment;
   final Color? color;

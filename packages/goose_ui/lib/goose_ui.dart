@@ -11,3 +11,4 @@ export 'src/widgets/dropdown/dropdown.dart';
 
 // relative package
 export 'package:ant_color/ant_color.dart';
+export 'package:flutter_portal/flutter_portal.dart';

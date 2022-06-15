@@ -20,12 +20,12 @@ class TooltipPainter extends CustomPainter {
       case AAlignment.bottomLeft:
       case AAlignment.leftTop:
       case AAlignment.rightTop:
-        return 0.2;
+        return 0.3;
       case AAlignment.topRight:
       case AAlignment.leftBottom:
       case AAlignment.rightBottom:
       case AAlignment.bottomRight:
-        return 0.8;
+        return 0.7;
       case AAlignment.topCenter:
       case AAlignment.bottomCenter:
       case AAlignment.rightCenter:
@@ -66,8 +66,8 @@ class TooltipPainter extends CustomPainter {
       Rect.fromLTRB(left, top, right, bottom),
       _direction,
       _base,
-      4,
       6,
+      12,
     );
     final path = ArrowBoxPath(
       rect: rect,
