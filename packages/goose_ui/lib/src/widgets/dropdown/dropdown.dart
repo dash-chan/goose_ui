@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
+import 'package:goose_ui/src/widgets/dropdown/dropdown_box.dart';
 
 import '../../enums/enums.dart';
 
@@ -19,12 +21,18 @@ class ADropdown extends StatefulWidget {
     super.key,
     this.anchor = ADropdownAnchor.bottomLeft,
     this.trigger = AInteractive.hover,
+    this.sameWidth = true,
+    this.showArrow = false,
+    required this.dropChild,
     required this.child,
   });
 
   final ADropdownAnchor anchor;
   final AInteractive trigger;
+  final bool sameWidth;
+  final bool showArrow;
   final Widget child;
+  final Widget dropChild;
 
   @override
   State<ADropdown> createState() => _ADropdownState();
@@ -33,7 +41,9 @@ class ADropdown extends StatefulWidget {
 class _ADropdownState extends State<ADropdown> {
   bool _visible = false;
 
-  Alignment get _follower {
+  Alignment get _target {
+    if (widget.trigger == AInteractive.rightClick) return Alignment.topLeft;
+
     switch (widget.anchor) {
       case ADropdownAnchor.topLeft:
         return Alignment.topLeft;
@@ -50,7 +60,9 @@ class _ADropdownState extends State<ADropdown> {
     }
   }
 
-  Alignment get _target {
+  Alignment get _follower {
+    if (widget.trigger == AInteractive.rightClick) return Alignment.topLeft;
+
     switch (widget.anchor) {
       case ADropdownAnchor.topLeft:
         return Alignment.bottomLeft;
@@ -65,6 +77,13 @@ class _ADropdownState extends State<ADropdown> {
       case ADropdownAnchor.bottomRight:
         return Alignment.topRight;
     }
+  }
+
+  Offset _contextMenuOffset = Offset.zero;
+
+  Offset get _offset {
+    if (widget.trigger != AInteractive.rightClick) return Offset.zero;
+    return _contextMenuOffset;
   }
 
   @override
@@ -74,25 +93,66 @@ class _ADropdownState extends State<ADropdown> {
       anchor: Aligned(
         follower: _follower,
         target: _target,
+        offset: _offset,
+        widthFactor: widget.sameWidth ? 1 : null,
       ),
       closeDuration: const Duration(milliseconds: 300),
       portalFollower: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
-        child: _visible ? Text('test') : const SizedBox.shrink(),
+        child: _visible
+            ? MouseRegion(
+                onEnter: (event) {
+                  setState(() {
+                    _visible = true;
+                  });
+                },
+                onExit: (event) {
+                  setState(() {
+                    _visible = false;
+                  });
+                },
+                child: DropdownBox(
+                  anchor: widget.anchor,
+                  showArrow: widget.showArrow,
+                  child: widget.dropChild,
+                ),
+              )
+            : const SizedBox.shrink(),
       ),
       child: MouseRegion(
         onEnter: (event) {
-          setState(() {
-            _visible = true;
-          });
+          if (widget.trigger == AInteractive.hover) {
+            setState(() {
+              _visible = true;
+            });
+          }
         },
         onExit: (event) {
           setState(() {
             _visible = false;
           });
         },
-        child: GestureDetector(
-          onTap: () {},
+        child: Listener(
+          behavior: HitTestBehavior.opaque,
+          onPointerDown: (event) {
+            if (widget.trigger == AInteractive.rightClick &&
+                event.kind == PointerDeviceKind.mouse &&
+                event.buttons == kSecondaryMouseButton) {
+              setState(() {
+                _contextMenuOffset = event.localPosition;
+                _visible = true;
+              });
+              return;
+            }
+          },
+          onPointerUp: (event) {
+            if (widget.trigger == AInteractive.click) {
+              setState(() {
+                _visible = true;
+              });
+              return;
+            }
+          },
           child: widget.child,
         ),
       ),

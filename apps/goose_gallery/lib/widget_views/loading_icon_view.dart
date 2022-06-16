@@ -51,6 +51,17 @@ class LoadingIconView extends StatelessWidget {
             // END
           ],
         ),
+        PlayBox(
+          title: '速度',
+          codes: CodeSegments.loadingIconSpeed(context),
+          desc: '',
+          children: [
+            // BEGIN loadingIconSpeed
+            for (final speed in <double>[0.5, 1, 2, 4, 8])
+              ALoadingIcon(speed: speed),
+            // END
+          ],
+        ),
         PlayBox.single(
           title: '进度',
           codes: CodeSegments.loadingIconProgress(context),

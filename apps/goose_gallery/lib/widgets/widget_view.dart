@@ -34,16 +34,19 @@ class _WidgetViewState extends State<WidgetView> {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
             sliver: _Title(widget.title, widget.desc),
           ),
-          SliverWaterfallFlow(
-            gridDelegate:
-                const SliverWaterfallFlowDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 500,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
-            ),
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => widget.children[index],
-              childCount: widget.children.length,
+          SliverPadding(
+            padding: const EdgeInsets.all(8.0),
+            sliver: SliverWaterfallFlow(
+              gridDelegate:
+                  const SliverWaterfallFlowDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 500,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => widget.children[index],
+                childCount: widget.children.length,
+              ),
             ),
           ),
         ],
