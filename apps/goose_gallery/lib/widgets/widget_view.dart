@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waterfall_flow/waterfall_flow.dart';
 
-class WidgetView extends StatelessWidget {
+class WidgetView extends StatefulWidget {
   const WidgetView({
     super.key,
     required this.title,
@@ -13,13 +13,26 @@ class WidgetView extends StatelessWidget {
   final List<Widget> children;
 
   @override
+  State<WidgetView> createState() => _WidgetViewState();
+}
+
+class _WidgetViewState extends State<WidgetView> {
+  final controller = ScrollController();
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Material(
       child: CustomScrollView(
+        controller: controller,
         slivers: [
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
-            sliver: _Title(title, desc),
+            sliver: _Title(widget.title, widget.desc),
           ),
           SliverWaterfallFlow(
             gridDelegate:
@@ -29,8 +42,8 @@ class WidgetView extends StatelessWidget {
               crossAxisSpacing: 12,
             ),
             delegate: SliverChildBuilderDelegate(
-              (context, index) => children[index],
-              childCount: children.length,
+              (context, index) => widget.children[index],
+              childCount: widget.children.length,
             ),
           ),
         ],
