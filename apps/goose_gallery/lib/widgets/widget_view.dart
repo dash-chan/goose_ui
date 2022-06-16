@@ -6,10 +6,12 @@ class WidgetView extends StatefulWidget {
     super.key,
     required this.title,
     required this.desc,
+    this.fullWidth = false,
     required this.children,
   });
   final String title;
   final String desc;
+  final bool fullWidth;
   final List<Widget> children;
 
   @override
@@ -36,18 +38,24 @@ class _WidgetViewState extends State<WidgetView> {
           ),
           SliverPadding(
             padding: const EdgeInsets.all(8.0),
-            sliver: SliverWaterfallFlow(
-              gridDelegate:
-                  const SliverWaterfallFlowDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 500,
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => widget.children[index],
-                childCount: widget.children.length,
-              ),
-            ),
+            sliver: widget.fullWidth
+                ? SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                    (context, index) => widget.children[index],
+                    childCount: widget.children.length,
+                  ))
+                : SliverWaterfallFlow(
+                    gridDelegate:
+                        const SliverWaterfallFlowDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 500,
+                      mainAxisSpacing: 12,
+                      crossAxisSpacing: 12,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) => widget.children[index],
+                      childCount: widget.children.length,
+                    ),
+                  ),
           ),
         ],
       ),

@@ -4,13 +4,13 @@ import 'package:goose_gallery/widgets/widget_view.dart';
 import 'package:goose_ui/goose_ui.dart';
 
 class DropdownView extends StatelessWidget {
-  const DropdownView({Key? key}) : super(key: key);
+  const DropdownView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return WidgetView(
-      title: 'DropDown',
-      desc: '',
+      title: 'DropDown 下拉菜单',
+      desc: '向下弹出的列表。',
       children: [
         PlayBox(
           title: 'title',
