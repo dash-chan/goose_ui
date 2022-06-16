@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:goose_gallery/widget_views/dropdown_view.dart';
+import 'package:goose_gallery/widget_views/loading_icon_view.dart';
 import 'package:goose_gallery/widget_views/tooltip_view.dart';
 
 import 'widget_views/button_view.dart';
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Widget _current = SizedBox();
+  Widget _current = const SizedBox();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +48,14 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       _current = const TooltipView();
+                    });
+                  },
+                ),
+                ListTile(
+                  title: const Text('Loading Icons'),
+                  onTap: () {
+                    setState(() {
+                      _current = const LoadingIconView();
                     });
                   },
                 ),
