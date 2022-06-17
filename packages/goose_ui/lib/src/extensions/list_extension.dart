@@ -28,4 +28,10 @@ extension ListX<T> on List<T> {
 
     return nextList;
   }
+
+  List<T> offset(int offsets) {
+    if (isEmpty) return <T>[];
+    offsets = offsets % length - 1;
+    return [...getRange(offsets + 1, length), ...getRange(0, offsets + 1)];
+  }
 }

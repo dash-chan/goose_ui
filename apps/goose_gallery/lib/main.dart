@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:goose_gallery/home_page.dart';
 import 'package:goose_ui/goose_ui.dart';
 
@@ -16,6 +17,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Goose Gallery',
         home: HomePage(),
+        supportedLocales: [Locale('en'), Locale('zh')],
+        localizationsDelegates: [
+          GlobalWidgetsLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
       ),
     );
   }
