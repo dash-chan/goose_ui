@@ -38,8 +38,6 @@ melos bs
     <a href="https://github.com/meng-fucius">
         <img src="https://avatars.githubusercontent.com/u/71968682?v=4" width="64" />
     </a>
-    
-    <!-- add more Contributor here -->
 </div>
 
 ## License
