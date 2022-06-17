@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goose_gallery/widgets_page/button_page.dart';
-import 'package:goose_gallery/widgets_page/tooltip_page.dart';
+import 'package:goose_gallery/widgets_page/avatar_page.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 
 void main() {
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const Portal(
       child: MaterialApp(
         title: 'Goose Gallery',
-        home: TooltipPage(),
+        home: AvatarPage(),
       ),
     );
   }
