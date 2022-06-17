@@ -32,8 +32,12 @@ melos bs
 ## Contribution
 
 <div style="display:flex;flex-wrap: wrap;gap: 8px">
-    <img src="https://avatars.githubusercontent.com/u/35956195?v=4" width="64">
-    <!-- add more Contributor here -->
+    <a href="https://github.com/laiiihz">
+        <img src="https://avatars.githubusercontent.com/u/35956195?v=4" width="64" />
+    </a>
+    <a href="https://github.com/meng-fucius">
+        <img src="https://avatars.githubusercontent.com/u/71968682?v=4" width="64" />
+    </a>
 </div>
 
 ## License
