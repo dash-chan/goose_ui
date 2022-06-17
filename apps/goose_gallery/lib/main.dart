@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goose_gallery/widgets_page/avatar_page.dart';
-import 'package:flutter_portal/flutter_portal.dart';
+import 'package:goose_gallery/home_page.dart';
+import 'package:goose_ui/goose_ui.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const Portal(
       child: MaterialApp(
         title: 'Goose Gallery',
-        home: AvatarPage(),
+        home: HomePage(),
       ),
     );
   }

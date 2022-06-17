@@ -33,4 +33,10 @@ extension AAlignmentX on AAlignment {
       this == AAlignment.bottomLeft ||
       this == AAlignment.bottomCenter ||
       this == AAlignment.bottomRight;
+
+  bool get baseCenter =>
+      this == AAlignment.leftCenter ||
+      this == AAlignment.rightCenter ||
+      this == AAlignment.topCenter ||
+      this == AAlignment.bottomCenter;
 }

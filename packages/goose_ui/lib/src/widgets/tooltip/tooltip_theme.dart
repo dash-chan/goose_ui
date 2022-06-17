@@ -5,18 +5,59 @@ import '../../themes/theme.dart';
 class ATooltipThemeData {
   ATooltipThemeData({
     this.color,
+    this.shadowColor,
+    this.labelColor,
+    this.style,
   });
   final Color? color;
+
+  /// normally use Colors.black.withOpacity(0.2)
+  final Color? shadowColor;
+  final Color? labelColor;
+  final TextStyle? style;
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is ATooltipThemeData && other.color == color;
+    return other is ATooltipThemeData &&
+        other.color == color &&
+        other.shadowColor == shadowColor &&
+        other.labelColor == labelColor &&
+        other.style == style;
   }
 
   @override
-  int get hashCode => color.hashCode;
+  int get hashCode {
+    return color.hashCode ^
+        shadowColor.hashCode ^
+        labelColor.hashCode ^
+        style.hashCode;
+  }
+
+  ATooltipThemeData copyWith({
+    Color? color,
+    Color? shadowColor,
+    Color? labelColor,
+    TextStyle? style,
+  }) {
+    return ATooltipThemeData(
+      color: color ?? this.color,
+      shadowColor: shadowColor ?? this.shadowColor,
+      labelColor: labelColor ?? this.labelColor,
+      style: style ?? this.style,
+    );
+  }
+
+  ATooltipThemeData merge(ATooltipThemeData? data) {
+    if (data == null) return this;
+    return copyWith(
+      color: data.color,
+      shadowColor: data.shadowColor,
+      labelColor: data.labelColor,
+      style: data.style,
+    );
+  }
 }
 
 class ATooltipTheme extends InheritedTheme {

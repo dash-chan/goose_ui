@@ -8,15 +8,28 @@ import 'tooltip_box.dart';
 import 'tooltip_theme.dart';
 
 class AToolTip extends StatefulWidget {
-  const AToolTip(
-      {super.key,
-      this.alignment = AAlignment.topCenter,
-      this.color,
-      required this.child});
+  const AToolTip({
+    super.key,
+    this.alignment = AAlignment.topCenter,
+    this.color,
+    this.shadowColor,
+    this.labelColor,
+    this.labelText,
+    this.label,
+    required this.child,
+  }) : assert(
+          label != null || labelText != null,
+          'must set label or label text',
+        );
 
   final AAlignment alignment;
   final Color? color;
+  final Color? shadowColor;
+  final Color? labelColor;
+
   final Widget child;
+  final String? labelText;
+  final Widget? label;
 
   @override
   State<AToolTip> createState() => _AToolTipState();
@@ -100,9 +113,38 @@ class _AToolTipState extends State<AToolTip> {
     return widget.color ?? ATooltipTheme.of(context).color ?? Colors.black;
   }
 
-  @override
-  void initState() {
-    super.initState();
+  Color get _shadowColor {
+    if (widget.shadowColor == null && widget.color != null) {
+      return widget.color!.withOpacity(0.2);
+    }
+    return widget.shadowColor ??
+        ATooltipTheme.of(context).shadowColor ??
+        Colors.black.withOpacity(0.2);
+  }
+
+  Color get _labelColor {
+    return widget.labelColor ??
+        ATooltipTheme.of(context).labelColor ??
+        Colors.white;
+  }
+
+  TextStyle get _textStyle {
+    return ATooltipTheme.of(context).style ?? const TextStyle(fontSize: 14);
+  }
+
+  Widget get _labelWidget {
+    late Widget label;
+    if (widget.labelText != null) {
+      label = Text(widget.labelText!);
+    } else if (widget.label != null) {
+      label = widget.label!;
+    } else {
+      throw UnimplementedError();
+    }
+    return DefaultTextStyle(
+      style: _textStyle.copyWith(color: _labelColor),
+      child: label,
+    );
   }
 
   @override
@@ -120,7 +162,12 @@ class _AToolTipState extends State<AToolTip> {
       portalFollower: MouseRegion(
         onEnter: (_) => removeTimer(),
         onExit: (_) => countDown(),
-        child: TooltipBox(alignment: widget.alignment, color: _color),
+        child: TooltipBox(
+          alignment: widget.alignment,
+          color: _color,
+          shadowColor: _shadowColor,
+          child: _labelWidget,
+        ),
       ),
       child: MouseRegion(
         hitTestBehavior: HitTestBehavior.translucent,

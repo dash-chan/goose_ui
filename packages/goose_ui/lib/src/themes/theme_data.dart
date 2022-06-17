@@ -29,7 +29,12 @@ class AThemeData {
 
     errorColor ??= AntColors.dustRed;
 
-    tooltipTheme ??= ATooltipThemeData();
+    tooltipTheme ??= ATooltipThemeData(
+      color: neutralColor.shade1200,
+      shadowColor: neutralColor.shade1200.withOpacity(0.2),
+      labelColor: neutralColor.shade100,
+      style: const TextStyle(fontSize: 14),
+    );
 
     return AThemeData.raw(
       primaryColor: primaryColor,

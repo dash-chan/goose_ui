@@ -7,10 +7,40 @@ class TooltipPainter extends CustomPainter {
   const TooltipPainter({
     required this.alignment,
     required this.color,
+    required this.shadowColor,
   });
 
   final AAlignment alignment;
   final Color color;
+  final Color shadowColor;
+
+  double get _base {
+    switch (alignment) {
+      case AAlignment.topLeft:
+      case AAlignment.bottomLeft:
+      case AAlignment.leftTop:
+      case AAlignment.rightTop:
+        return 0.3;
+      case AAlignment.topRight:
+      case AAlignment.leftBottom:
+      case AAlignment.rightBottom:
+      case AAlignment.bottomRight:
+        return 0.7;
+      case AAlignment.topCenter:
+      case AAlignment.bottomCenter:
+      case AAlignment.rightCenter:
+      case AAlignment.leftCenter:
+        return 0.5;
+    }
+  }
+
+  AxisDirection get _direction {
+    if (alignment.isTop) return AxisDirection.down;
+    if (alignment.isBottom) return AxisDirection.up;
+    if (alignment.isLeft) return AxisDirection.right;
+    if (alignment.isRight) return AxisDirection.left;
+    return AxisDirection.down;
+  }
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -20,7 +50,7 @@ class TooltipPainter extends CustomPainter {
       ..strokeWidth = 1;
 
     Paint shadowPaint = Paint()
-      ..color = color.withOpacity(0.1)
+      ..color = shadowColor
       ..style = PaintingStyle.fill
       ..maskFilter = const MaskFilter.blur(BlurStyle.outer, 8)
       ..strokeWidth = 1;
@@ -30,20 +60,23 @@ class TooltipPainter extends CustomPainter {
     final bottom = size.height;
     final right = size.width;
 
-    canvas.drawPath(
-      arrowBoxPath(
-        rect: Rect.fromLTRB(left, top, right, bottom),
-        alignment: alignment,
-      ),
-      shadowPaint,
+    final rect = Rect.fromLTRB(left, top, right, bottom);
+    final borderRadius = BorderRadius.circular(4);
+    final control = ArrowControlPoints.fromBaseline(
+      Rect.fromLTRB(left, top, right, bottom),
+      _direction,
+      _base,
+      6,
+      12,
     );
-    canvas.drawPath(
-      arrowBoxPath(
-        rect: Rect.fromLTRB(left, top, right, bottom),
-        alignment: alignment,
-      ),
-      paint,
+    final path = ArrowBoxPath(
+      rect: rect,
+      borderRadius: borderRadius,
+      control: control,
     );
+
+    canvas.drawPath(path, shadowPaint);
+    canvas.drawPath(path, paint);
   }
 
   @override
