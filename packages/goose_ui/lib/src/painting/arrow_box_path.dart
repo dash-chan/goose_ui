@@ -2,28 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class ArrowBoxPath extends Path {
-  ArrowBoxPath({
-    required this.rect,
-    required this.borderRadius,
-    required this.control,
-  }) {
-    if (control == null && borderRadius == BorderRadius.zero) {
-      addRect(rect);
-      return;
-    }
-    if (control == null) {
-      addRRect(borderRadius.toRRect(rect));
-      return;
-    }
-
-    paintNormal();
-  }
-
-  final Rect rect;
-  final BorderRadius borderRadius;
-  final ArrowControlPoints? control;
-
+Path arrowBoxPath({
+  required Rect rect,
+  required BorderRadius borderRadius,
+  required ArrowControlPoints? control,
+}) {
   AxisDirection _direction(Offset point) {
     final dx = point.dx;
     final dy = point.dy;
@@ -36,16 +19,20 @@ class ArrowBoxPath extends Path {
     return AxisDirection.down;
   }
 
-  paintNormal() {
-    if (control == null) return;
-    final needleDirection = _direction(control!.needle);
-    final startDirection = _direction(control!.start);
-    final endDirection = _direction(control!.end);
+  final path = Path();
+  if (control == null && borderRadius == BorderRadius.zero) {
+    path.addRect(rect);
+  } else if (control == null) {
+    path.addRRect(borderRadius.toRRect(rect));
+  } else {
+    final needleDirection = _direction(control.needle);
+    final startDirection = _direction(control.start);
+    final endDirection = _direction(control.end);
     // check border radius
     // moveTo(rect.left, rect.top);
 
     // top-left
-    arcTo(
+    path.arcTo(
       Rect.fromLTWH(
         rect.left,
         rect.top,
@@ -57,14 +44,14 @@ class ArrowBoxPath extends Path {
       false,
     );
     if (startDirection == AxisDirection.up) {
-      lineTo(control!.start.dx, control!.start.dy);
-      lineTo(control!.needle.dx, control!.needle.dy);
+      path.lineTo(control.start.dx, control.start.dy);
+      path.lineTo(control.needle.dx, control.needle.dy);
     }
     if (endDirection == AxisDirection.up) {
-      lineTo(control!.end.dx, control!.end.dy);
+      path.lineTo(control.end.dx, control.end.dy);
     }
 
-    arcTo(
+    path.arcTo(
       Rect.fromLTWH(
         rect.right - borderRadius.topRight.x,
         rect.top,
@@ -77,14 +64,14 @@ class ArrowBoxPath extends Path {
     );
 
     if (startDirection == AxisDirection.right) {
-      lineTo(control!.start.dx, control!.start.dy);
-      lineTo(control!.needle.dx, control!.needle.dy);
+      path.lineTo(control.start.dx, control.start.dy);
+      path.lineTo(control.needle.dx, control.needle.dy);
     }
     if (endDirection == AxisDirection.right) {
-      lineTo(control!.end.dx, control!.end.dy);
+      path.lineTo(control.end.dx, control.end.dy);
     }
 
-    arcTo(
+    path.arcTo(
       Rect.fromLTWH(
         rect.right - borderRadius.bottomRight.x,
         rect.bottom - borderRadius.bottomRight.y,
@@ -97,14 +84,14 @@ class ArrowBoxPath extends Path {
     );
 
     if (startDirection == AxisDirection.down) {
-      lineTo(control!.start.dx, control!.start.dy);
-      lineTo(control!.needle.dx, control!.needle.dy);
+      path.lineTo(control.start.dx, control.start.dy);
+      path.lineTo(control.needle.dx, control.needle.dy);
     }
     if (endDirection == AxisDirection.down) {
-      lineTo(control!.end.dx, control!.end.dy);
+      path.lineTo(control.end.dx, control.end.dy);
     }
 
-    arcTo(
+    path.arcTo(
       Rect.fromLTWH(
         rect.left,
         rect.bottom - borderRadius.bottomLeft.y,
@@ -117,15 +104,17 @@ class ArrowBoxPath extends Path {
     );
 
     if (startDirection == AxisDirection.left) {
-      lineTo(control!.start.dx, control!.start.dy);
-      lineTo(control!.needle.dx, control!.needle.dy);
+      path.lineTo(control.start.dx, control.start.dy);
+      path.lineTo(control.needle.dx, control.needle.dy);
     }
     if (endDirection == AxisDirection.left) {
-      lineTo(control!.end.dx, control!.end.dy);
+      path.lineTo(control.end.dx, control.end.dy);
     }
 
-    close();
+    path.close();
   }
+
+  return path;
 }
 
 class ArrowControlPoints {

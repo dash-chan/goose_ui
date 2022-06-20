@@ -62,7 +62,7 @@ class ADropdownPainter extends CustomPainter {
       );
     }
     canvas.drawPath(
-      ArrowBoxPath(
+      arrowBoxPath(
         rect: rect,
         borderRadius: BorderRadius.circular(4),
         control: control,
@@ -70,7 +70,7 @@ class ADropdownPainter extends CustomPainter {
       shadowPaint,
     );
     canvas.drawPath(
-      ArrowBoxPath(
+      arrowBoxPath(
         rect: rect,
         borderRadius: BorderRadius.circular(4),
         control: control,

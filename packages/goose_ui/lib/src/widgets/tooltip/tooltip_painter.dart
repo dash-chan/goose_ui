@@ -69,7 +69,7 @@ class TooltipPainter extends CustomPainter {
       6,
       12,
     );
-    final path = ArrowBoxPath(
+    final path = arrowBoxPath(
       rect: rect,
       borderRadius: borderRadius,
       control: control,
