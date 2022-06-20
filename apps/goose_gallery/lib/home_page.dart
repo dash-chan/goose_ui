@@ -5,6 +5,7 @@ import 'package:goose_gallery/widget_views/calendar_view.dart';
 import 'package:goose_gallery/widget_views/dropdown_view.dart';
 import 'package:goose_gallery/widget_views/loading_icon_view.dart';
 import 'package:goose_gallery/widget_views/segmented_view.dart';
+import 'package:goose_gallery/widget_views/switch_view.dart';
 import 'package:goose_gallery/widget_views/tooltip_view.dart';
 
 import 'widget_views/button_view.dart';
@@ -83,6 +84,14 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       _current = const SegmentedView();
+                    });
+                  },
+                ),
+                ListTile(
+                  title: const Text('Switch'),
+                  onTap: () {
+                    setState(() {
+                      _current = const SwitchView();
                     });
                   },
                 ),
