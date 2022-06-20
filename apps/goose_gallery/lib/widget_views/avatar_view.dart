@@ -139,7 +139,7 @@ class AvatarViewState extends State<AvatarView> {
               AButton(
                 onPressed: () {
                   setState(() {
-                    gapIndex = (++gapIndex) % 5;
+                    gapIndex = (++gapIndex) % 3;
                   });
                 },
                 child: const Text('ChangeGap'),

@@ -15,7 +15,7 @@ class CalendarView extends StatelessWidget {
       children: [
         PlayBox.single(
           title: 'title',
-          codes: TextSpan(),
+          codes: const TextSpan(),
           desc: '',
           child: SizedBox(
             width: double.infinity,
