@@ -1,9 +1,11 @@
-![logo](docs/image/logo.png)
+<img src="docs/image/logo.png" width="64" />
 
 # goose_ui
 an ant design uikit implements in `flutter`. 
 
 > caution: package is in <span style="color:red">development</span>,not for product usage.
+> 
+> development is under `flutter 3`
 ## Getting Started
 
 ### run gallery 
