@@ -12,6 +12,7 @@ export 'src/widgets/dropdown/dropdown.dart';
 export 'src/widgets/loading_icon/loading_icon.dart';
 export 'src/widgets/segmented/segmented.dart';
 export 'src/widgets/switch/switch.dart';
+export 'src/widgets/badge/badge.dart';
 
 //TODO
 export 'src/widgets/calendar/calendar_month_view.dart';

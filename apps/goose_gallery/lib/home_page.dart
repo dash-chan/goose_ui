@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:goose_gallery/widget_views/avatar_view.dart';
+import 'package:goose_gallery/widget_views/badge_view.dart';
 import 'package:goose_gallery/widget_views/calendar_view.dart';
 import 'package:goose_gallery/widget_views/dropdown_view.dart';
 import 'package:goose_gallery/widget_views/loading_icon_view.dart';
@@ -92,6 +93,14 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       _current = const SwitchView();
+                    });
+                  },
+                ),
+                ListTile(
+                  title: const Text('Badge'),
+                  onTap: () {
+                    setState(() {
+                      _current = const BadgeView();
                     });
                   },
                 ),
