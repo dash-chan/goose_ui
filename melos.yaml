@@ -2,7 +2,7 @@ name: goose_ui
 
 packages:
   - packages/**
-  - apps/goose_gallery/**
+  - apps/**
 
 ignore:
   - packages/**/example

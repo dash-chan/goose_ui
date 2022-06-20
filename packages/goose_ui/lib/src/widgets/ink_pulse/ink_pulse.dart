@@ -16,6 +16,7 @@ class InkPulse extends InteractiveInkFeature {
     BorderRadius? borderRadius,
     ShapeBorder? shapeBorder,
     RectCallback? clipCallback,
+    super.onRemoved,
   }) {
     _borderRadius = borderRadius;
     _shapeBorder = shapeBorder;
@@ -56,6 +57,7 @@ class InkPulse extends InteractiveInkFeature {
 
   @override
   void cancel() {
+    print('cancel');
     dispose();
   }
 
@@ -123,6 +125,7 @@ class _InkPulseFactory extends InteractiveInkFeatureFactory {
       color: color,
       borderRadius: borderRadius,
       shapeBorder: customBorder,
+      onRemoved: onRemoved,
     );
   }
 }

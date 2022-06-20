@@ -9,18 +9,18 @@ packages:
     source: hosted
     version: "2.0.3"
   ant_color:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: ant_color
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "../../packages/ant_color"
+      relative: true
+    source: path
     version: "0.0.3"
   antd_icons:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: antd_icons
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "../../packages/antd_icons"
+      relative: true
+    source: path
     version: "0.0.3"
   args:
     dependency: "direct dev"
@@ -35,7 +35,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.9.0"
+    version: "2.8.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -118,6 +118,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  flutter_localizations:
+    dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_portal:
     dependency: transitive
     description:
@@ -143,7 +148,7 @@ packages:
       name: glob
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.2"
+    version: "2.1.0"
   goose_ui:
     dependency: "direct main"
     description:
@@ -158,6 +163,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.1"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   lints:
     dependency: transitive
     description:

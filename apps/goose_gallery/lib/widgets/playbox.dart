@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
 class PlayBox extends StatelessWidget {
-  const PlayBox(
-      {Key? key,
-      required this.title,
-      required this.children,
-      required this.codes,
-      required this.desc})
-      : super(key: key);
+  const PlayBox({
+    Key? key,
+    required this.title,
+    required this.codes,
+    required this.desc,
+    required this.children,
+  }) : super(key: key);
 
-  PlayBox.single(
-      {Key? key,
-      required this.title,
-      required Widget child,
-      required this.codes,
-      required this.desc})
-      : children = [child],
+  PlayBox.single({
+    Key? key,
+    required this.title,
+    required this.codes,
+    required this.desc,
+    required Widget child,
+  })  : children = [child],
         super(key: key);
 
   final String title;

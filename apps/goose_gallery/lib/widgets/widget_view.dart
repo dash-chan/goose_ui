@@ -41,7 +41,10 @@ class _WidgetViewState extends State<WidgetView> {
             sliver: widget.fullWidth
                 ? SliverList(
                     delegate: SliverChildBuilderDelegate(
-                    (context, index) => widget.children[index],
+                    (context, index) => Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: widget.children[index],
+                    ),
                     childCount: widget.children.length,
                   ))
                 : SliverWaterfallFlow(

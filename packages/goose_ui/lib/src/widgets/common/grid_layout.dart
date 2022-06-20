@@ -5,6 +5,7 @@ class AGridLayout extends StatelessWidget {
   const AGridLayout({
     super.key,
     required this.count,
+    this.padding = EdgeInsets.zero,
     this.spacing = 0,
     this.crossAxisSpacing = 0,
     required this.children,
@@ -12,6 +13,7 @@ class AGridLayout extends StatelessWidget {
 
   final List<Widget> children;
   final int count;
+  final EdgeInsets padding;
   final double spacing;
   final double crossAxisSpacing;
 
@@ -30,20 +32,26 @@ class AGridLayout extends StatelessWidget {
       }
       result.add(childList);
     }
-    final childrenList =
+    var childrenList =
         children.getRange((line - 1) * count, children.length).toList();
+    if (spacing != 0) {
+      childrenList = childrenList.joined(SizedBox(width: spacing));
+    }
     result.add(childrenList);
-
     return result;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    Widget result = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
+      children: <Widget>[
         for (var item in items) Row(children: item),
-      ],
+      ].joined(SizedBox(height: crossAxisSpacing)),
     );
+    if (padding != EdgeInsets.zero) {
+      result = Padding(padding: padding, child: result);
+    }
+    return result;
   }
 }

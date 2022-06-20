@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension AutoSizeTextEXT on Text {
+  /// Creates a [Text] widget that scales the text to fit the max width.
   Widget get auto => LayoutBuilder(builder: (context, size) {
         final defaultTextStyle = DefaultTextStyle.of(context);
         var newStyle = style;

@@ -97,7 +97,7 @@ class TooltipShape extends ShapeBorder {
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
-    return ArrowBoxPath(
+    return arrowBoxPath(
       rect: rect,
       borderRadius: borderRadius,
       control: ArrowControlPoints.fromBaseline(
@@ -112,7 +112,7 @@ class TooltipShape extends ShapeBorder {
 
   @override
   Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
-    return ArrowBoxPath(
+    return arrowBoxPath(
       rect: rect,
       borderRadius: borderRadius,
       control: ArrowControlPoints.fromBaseline(
