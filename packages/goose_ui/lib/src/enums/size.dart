@@ -1,12 +1,14 @@
 enum ASize {
-  small,
+  small(24),
+  medium(32),
+  large(40);
 
-  medium,
+  final double size;
 
-  large,
-}
+  const ASize(this.size);
 
-extension ASizeX on ASize {
+  double customSize(double num) => num;
+
   /// small: 24
   /// medium: 32
   /// large: 40
