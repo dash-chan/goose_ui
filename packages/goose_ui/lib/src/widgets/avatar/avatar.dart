@@ -3,6 +3,8 @@ import 'package:goose_ui/goose_ui.dart';
 import 'package:goose_ui/src/enums/avatar_type.dart';
 import 'package:goose_ui/src/extensions/auto_size_text.dart';
 
+export 'avatar_group.dart';
+
 class AAvatar extends StatefulWidget {
   final String? alt;
 
