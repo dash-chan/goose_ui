@@ -12,6 +12,10 @@ an ant design uikit implements in `flutter`.
 
 ```shell
 cd apps/goose_gallery
+cd lib
+mkdir gen
+grind gen
+cd ..
 flutter run
 ```
 
