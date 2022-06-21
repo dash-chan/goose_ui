@@ -15,7 +15,7 @@ class CalendarView extends StatelessWidget {
       children: [
         PlayBox.single(
           title: 'Month View Full',
-          codes: TextSpan(),
+          codes: const TextSpan(),
           desc: '',
           child: const SizedBox(
             width: double.infinity,
@@ -24,7 +24,7 @@ class CalendarView extends StatelessWidget {
         ),
         PlayBox.single(
           title: 'Month View',
-          codes: TextSpan(),
+          codes: const TextSpan(),
           desc: '',
           child: CalendarMonthView.value(
             year: 2022,
@@ -36,9 +36,9 @@ class CalendarView extends StatelessWidget {
         ),
         PlayBox.single(
           title: 'Year View',
-          codes: TextSpan(),
+          codes: const TextSpan(),
           desc: '',
-          child: CalendarYearView(
+          child: const CalendarYearView(
             year: 2022,
             fullScreen: false,
           ),

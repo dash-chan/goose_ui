@@ -34,7 +34,7 @@ class DefaultASegmentedWidget extends StatefulWidget {
 }
 
 class _DefaultASegmentedWidgetState extends State<DefaultASegmentedWidget> {
-  int? _value = null;
+  int? _value;
   @override
   Widget build(BuildContext context) {
     return ASegmented<int>(
