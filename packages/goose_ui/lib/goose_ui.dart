@@ -13,7 +13,7 @@ export 'src/widgets/loading_icon/loading_icon.dart';
 export 'src/widgets/segmented/segmented.dart';
 export 'src/widgets/switch/switch.dart';
 export 'src/widgets/badge/badge.dart';
-
+export 'src/widgets/card/card.dart';
 //TODO
 export 'src/widgets/calendar/calendar_month_view.dart';
 export 'src/widgets/calendar/calendar_year_view.dart';

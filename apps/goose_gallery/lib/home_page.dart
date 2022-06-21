@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:goose_gallery/widget_views/avatar_view.dart';
 import 'package:goose_gallery/widget_views/badge_view.dart';
 import 'package:goose_gallery/widget_views/calendar_view.dart';
+import 'package:goose_gallery/widget_views/card_view.dart';
 import 'package:goose_gallery/widget_views/dropdown_view.dart';
 import 'package:goose_gallery/widget_views/loading_icon_view.dart';
 import 'package:goose_gallery/widget_views/segmented_view.dart';
@@ -20,6 +21,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Widget _current = const SizedBox();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,6 +106,14 @@ class _HomePageState extends State<HomePage> {
                     });
                   },
                 ),
+                ListTile(
+                  title: const Text('card'),
+                  onTap: () {
+                    setState(() {
+                      _current = const ACardView();
+                    });
+                  },
+                )
               ],
             ),
           ),
