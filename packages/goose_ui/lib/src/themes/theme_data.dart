@@ -1,5 +1,6 @@
 import 'package:ant_color/ant_color.dart';
 import 'package:flutter/material.dart';
+import 'package:goose_ui/src/widgets/badge/badge_theme.dart';
 
 import '../widgets/button/button_theme.dart';
 import '../widgets/tooltip/tooltip_theme.dart';
@@ -13,6 +14,7 @@ class AThemeData {
     AntColor? errorColor,
     AButtonThemeData? buttonTheme,
     ATooltipThemeData? tooltipTheme,
+    ARibbonBadgeThemeData? ribbonBadgeTheme,
   }) {
     primaryAntColor ??= AntColors.daybreakBlue;
     neutralColor ??= AntColors.neutral;
@@ -36,6 +38,11 @@ class AThemeData {
       style: const TextStyle(fontSize: 14),
     );
 
+    ribbonBadgeTheme ??= ARibbonBadgeThemeData(
+      color: primaryAntColor,
+      darkColor: primaryAntColor.shade800,
+    );
+
     return AThemeData.raw(
       primaryColor: primaryColor,
       primaryAntColor: primaryAntColor,
@@ -44,6 +51,7 @@ class AThemeData {
       pulseColor: pulseColor,
       errorColor: errorColor,
       tooltipTheme: tooltipTheme,
+      ribbonBadgeTheme: ribbonBadgeTheme,
     );
   }
 
@@ -55,6 +63,7 @@ class AThemeData {
     required this.errorColor,
     required this.buttonTheme,
     required this.tooltipTheme,
+    required this.ribbonBadgeTheme,
   });
 
   final Color primaryColor;
@@ -64,6 +73,7 @@ class AThemeData {
   final AntColor errorColor;
   final AButtonThemeData buttonTheme;
   final ATooltipThemeData tooltipTheme;
+  final ARibbonBadgeThemeData ribbonBadgeTheme;
 
   @override
   bool operator ==(Object other) {
@@ -76,7 +86,8 @@ class AThemeData {
         other.pulseColor == pulseColor &&
         other.errorColor == errorColor &&
         other.buttonTheme == buttonTheme &&
-        other.tooltipTheme == tooltipTheme;
+        other.tooltipTheme == tooltipTheme &&
+        other.ribbonBadgeTheme == ribbonBadgeTheme;
   }
 
   @override
@@ -87,6 +98,7 @@ class AThemeData {
         pulseColor.hashCode ^
         errorColor.hashCode ^
         buttonTheme.hashCode ^
-        tooltipTheme.hashCode;
+        tooltipTheme.hashCode ^
+        ribbonBadgeTheme.hashCode;
   }
 }
