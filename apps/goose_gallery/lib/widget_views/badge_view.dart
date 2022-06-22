@@ -48,7 +48,7 @@ class BadgeView extends StatelessWidget {
             // END
           ],
         ),
-        PlayBox(
+        const PlayBox(
           title: 'title',
           codes: TextSpan(),
           desc: 'desc',

@@ -8,7 +8,7 @@ class SwitchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WidgetView(
+    return const WidgetView(
       title: 'Switch 开关',
       desc: '',
       children: [
