@@ -1,5 +1,6 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:goose_ui/src/widgets/badge/badge.dart';
 
 class RibbonWidget extends SingleChildRenderObjectWidget {
   const RibbonWidget({
@@ -7,16 +8,22 @@ class RibbonWidget extends SingleChildRenderObjectWidget {
     super.child,
     required this.color,
     required this.darkColor,
+    required this.placement,
+    required this.padding,
   });
 
   final Color color;
   final Color darkColor;
+  final ARibbonPlacement placement;
+  final EdgeInsets padding;
 
   @override
   RenderObject createRenderObject(BuildContext context) {
     return RibbonRenderObject(
       color: color,
       darkColor: darkColor,
+      placement: placement,
+      padding: padding,
     );
   }
 
@@ -25,15 +32,33 @@ class RibbonWidget extends SingleChildRenderObjectWidget {
       BuildContext context, RibbonRenderObject renderObject) {
     renderObject
       ..color = color
-      ..darkColor = darkColor;
+      ..darkColor = darkColor
+      ..placement = placement
+      ..padding = padding;
   }
 }
 
 class RibbonRenderObject extends RenderProxyBox {
-  RibbonRenderObject({required this.color, required this.darkColor});
+  RibbonRenderObject({
+    required this.color,
+    required this.darkColor,
+    required this.placement,
+    required this.padding,
+  });
 
   Color color;
   Color darkColor;
+  ARibbonPlacement placement;
+  EdgeInsets padding;
+
+  Offset get _computedOffset {
+    switch (placement) {
+      case ARibbonPlacement.start:
+        return Offset(-padding.left, 0);
+      case ARibbonPlacement.end:
+        return Offset(padding.right, 0);
+    }
+  }
 
   @override
   void performLayout() {
@@ -48,25 +73,49 @@ class RibbonRenderObject extends RenderProxyBox {
     const radius = Radius.circular(2);
     final paintRect = offset & size;
 
-    context.canvas.drawRRect(
-      RRect.fromRectAndCorners(
-        offset & (size + const Offset(8, 0)),
-        topLeft: radius,
-        topRight: radius,
-        bottomLeft: radius,
-      ),
-      paint,
-    );
+    final nextOffset = offset + _computedOffset;
 
-    context.canvas.drawPath(
-      Path()
-        ..moveTo(paintRect.right, paintRect.bottom)
-        ..lineTo(paintRect.right + 8, paintRect.bottom)
-        ..lineTo(paintRect.right, paintRect.bottom + 4)
-        ..close(),
-      darkPaint,
-    );
+    switch (placement) {
+      case ARibbonPlacement.start:
+        context.canvas.drawRRect(
+          RRect.fromRectAndCorners(
+            nextOffset & size,
+            topLeft: radius,
+            topRight: radius,
+            bottomRight: radius,
+          ),
+          paint,
+        );
+        context.canvas.drawPath(
+          Path()
+            ..moveTo(paintRect.left, paintRect.bottom)
+            ..lineTo(paintRect.left + _computedOffset.dx, paintRect.bottom)
+            ..lineTo(paintRect.left, paintRect.bottom - _computedOffset.dx / 2)
+            ..close(),
+          darkPaint,
+        );
+        break;
+      case ARibbonPlacement.end:
+        context.canvas.drawRRect(
+          RRect.fromRectAndCorners(
+            nextOffset & size,
+            topLeft: radius,
+            topRight: radius,
+            bottomLeft: radius,
+          ),
+          paint,
+        );
+        context.canvas.drawPath(
+          Path()
+            ..moveTo(paintRect.right, paintRect.bottom)
+            ..lineTo(paintRect.right + _computedOffset.dx, paintRect.bottom)
+            ..lineTo(paintRect.right, paintRect.bottom + _computedOffset.dx / 2)
+            ..close(),
+          darkPaint,
+        );
+        break;
+    }
 
-    super.paint(context, offset);
+    super.paint(context, nextOffset);
   }
 }
