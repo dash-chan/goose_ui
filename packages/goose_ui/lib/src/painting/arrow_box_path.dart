@@ -25,7 +25,6 @@ Path arrowBoxPath({
   } else if (control == null) {
     path.addRRect(borderRadius.toRRect(rect));
   } else {
-    final needleDirection = _direction(control.needle);
     final startDirection = _direction(control.start);
     final endDirection = _direction(control.end);
     // check border radius
