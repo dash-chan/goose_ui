@@ -1,5 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:goose_gallery/widget_views/animated_scroll_widget_view.dart';
 import 'package:goose_gallery/widget_views/avatar_view.dart';
 import 'package:goose_gallery/widget_views/badge_view.dart';
 import 'package:goose_gallery/widget_views/calendar_view.dart';
@@ -9,6 +10,7 @@ import 'package:goose_gallery/widget_views/loading_icon_view.dart';
 import 'package:goose_gallery/widget_views/segmented_view.dart';
 import 'package:goose_gallery/widget_views/switch_view.dart';
 import 'package:goose_gallery/widget_views/tooltip_view.dart';
+import 'package:goose_ui/goose_ui.dart';
 
 import 'widget_views/button_view.dart';
 
@@ -111,6 +113,14 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     setState(() {
                       _current = const ACardView();
+                    });
+                  },
+                ),
+                ListTile(
+                  title: const Text('Animated Scroll Widgets'),
+                  onTap: () {
+                    setState(() {
+                      _current = const AnimatedScrollWidgetView();
                     });
                   },
                 )
