@@ -14,6 +14,7 @@ export 'src/widgets/segmented/segmented.dart';
 export 'src/widgets/switch/switch.dart';
 export 'src/widgets/badge/badge.dart';
 export 'src/widgets/card/card.dart';
+export 'src/widgets/animated_scroll_number/animated_scroll_number.dart';
 //TODO
 export 'src/widgets/calendar/calendar_month_view.dart';
 export 'src/widgets/calendar/calendar_year_view.dart';
