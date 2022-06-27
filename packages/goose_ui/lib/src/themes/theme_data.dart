@@ -1,6 +1,8 @@
 import 'package:ant_color/ant_color.dart';
 import 'package:flutter/material.dart';
+
 import 'package:goose_ui/src/widgets/badge/badge_theme.dart';
+import 'package:goose_ui/src/widgets/switch/switch_theme.dart';
 
 import '../widgets/button/button_theme.dart';
 import '../widgets/tooltip/tooltip_theme.dart';
@@ -15,6 +17,7 @@ class AThemeData {
     AButtonThemeData? buttonTheme,
     ATooltipThemeData? tooltipTheme,
     ARibbonBadgeThemeData? ribbonBadgeTheme,
+    ASwitchThemeData? switchTheme,
   }) {
     primaryAntColor ??= AntColors.daybreakBlue;
     neutralColor ??= AntColors.neutral;
@@ -43,6 +46,13 @@ class AThemeData {
       darkColor: primaryAntColor.shade800,
     );
 
+    switchTheme ??= ASwitchThemeData();
+    switchTheme = ASwitchThemeData(
+      thumbColor: neutralColor.shade100,
+      trackColor: neutralColor.shade600,
+      activeTrackColor: primaryAntColor,
+    ).merge(switchTheme);
+
     return AThemeData.raw(
       primaryColor: primaryColor,
       primaryAntColor: primaryAntColor,
@@ -52,6 +62,7 @@ class AThemeData {
       errorColor: errorColor,
       tooltipTheme: tooltipTheme,
       ribbonBadgeTheme: ribbonBadgeTheme,
+      switchTheme: switchTheme,
     );
   }
 
@@ -64,6 +75,7 @@ class AThemeData {
     required this.buttonTheme,
     required this.tooltipTheme,
     required this.ribbonBadgeTheme,
+    required this.switchTheme,
   });
 
   final Color primaryColor;
@@ -74,6 +86,7 @@ class AThemeData {
   final AButtonThemeData buttonTheme;
   final ATooltipThemeData tooltipTheme;
   final ARibbonBadgeThemeData ribbonBadgeTheme;
+  final ASwitchThemeData switchTheme;
 
   @override
   bool operator ==(Object other) {
@@ -87,7 +100,8 @@ class AThemeData {
         other.errorColor == errorColor &&
         other.buttonTheme == buttonTheme &&
         other.tooltipTheme == tooltipTheme &&
-        other.ribbonBadgeTheme == ribbonBadgeTheme;
+        other.ribbonBadgeTheme == ribbonBadgeTheme &&
+        other.switchTheme == switchTheme;
   }
 
   @override
@@ -99,6 +113,7 @@ class AThemeData {
         errorColor.hashCode ^
         buttonTheme.hashCode ^
         tooltipTheme.hashCode ^
-        ribbonBadgeTheme.hashCode;
+        ribbonBadgeTheme.hashCode ^
+        switchTheme.hashCode;
   }
 }
